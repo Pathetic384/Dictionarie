@@ -13,20 +13,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
+import java.sql.*;
+
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.ResourceBundle;
-import java.util.Set;
-import java.util.TreeMap;
+import java.time.LocalDate;
+import java.util.*;
+
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
 
 public class UI_Dic implements Initializable {
 
@@ -38,11 +38,15 @@ public class UI_Dic implements Initializable {
     private TextArea result;
     @FXML
     private Button enter;
-
+    @FXML
+    private Label TheWord;
 
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    Connection connection = null;
+    PreparedStatement psInsert = null;
 
     Dictionary testing = new Dictionary();
     ObservableList<String> list = FXCollections.observableArrayList();
@@ -71,7 +75,7 @@ public class UI_Dic implements Initializable {
 
                     }
                     else{
-                        //list.clear();
+
                     }
                 }
 
@@ -80,7 +84,7 @@ public class UI_Dic implements Initializable {
                 list.clear();
 
                 if(finding.isEmpty()) {
-                    recommend.getItems().clear();
+                    //recommend.getItems().clear();
                 }
 
             }
@@ -92,18 +96,35 @@ public class UI_Dic implements Initializable {
                 String select = recommend.getSelectionModel().getSelectedItem();
                 String ans = testing.FindWord(select);
                 result.setText(ans);
+                TheWord.setText(select);
+                if(select != null) {
+                    AddToSQL(select, ans);
+                }
             }
         });
 
     }
 
-
     public void confirm(ActionEvent event) throws Exception {
 
         String text = search.getText();
-        String ans = testing.FindWord(text);
-        result.setText(ans);
+        if(testing.FindWord(text) != null) {
+            String ans = testing.FindWord(text);
+            result.setText(ans);
+            TheWord.setText(text);
+            AddToSQL(text, ans);
+        }
+    }
 
+    public void read(ActionEvent event) throws Exception {
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+        if (!Objects.equals(TheWord.getText(), "")) {
+            if (voice != null) {
+                voice.allocate();
+                voice.speak(TheWord.getText());
+            } else throw new IllegalStateException("Cannot find voice: kevin16");
+        }
     }
 
     public void newWord(ActionEvent event) throws Exception {
@@ -114,4 +135,79 @@ public class UI_Dic implements Initializable {
         stage.show();
     }
 
+    public void Gtranslate(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("googletranslate.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void ShowHistory(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("history.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void ShowGame(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("game.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void delete(ActionEvent event) throws Exception {
+
+        //System.out.println(testing.map.size());
+
+        String del = TheWord.getText();
+        Word word = new Word(del, result.getText());
+        testing.map.remove(del);
+
+        testing.SaveFile();
+        //System.out.println(testing.map.size());
+
+
+        Parent root = FXMLLoader.load(getClass().getResource("dict.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void AddToSQL (String word, String meaning) {
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/history", "root", "papcusun");
+            psInsert = connection.prepareStatement("INSERT INTO save (time, word, meaning) VALUES (?, ?, ?)");
+            LocalDate now = LocalDate.now();
+            psInsert.setString(1, now.toString());
+            psInsert.setString(2, word);
+            psInsert.setString(3,meaning);
+            psInsert.executeUpdate();
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        finally{
+            if( psInsert!=null ) {
+                try {
+                    psInsert.close();
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if( connection!=null ) {
+                try {
+                    connection.close();
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }

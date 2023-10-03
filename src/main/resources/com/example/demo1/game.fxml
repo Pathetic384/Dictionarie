@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Game">
+   <children>
+      <Button focusTraversable="false" layoutX="30.0" layoutY="14.0" mnemonicParsing="false" onAction="#Return" text="Back" />
+      <FlowPane fx:id="butts" alignment="TOP_CENTER" hgap="8.0" layoutX="13.0" layoutY="300.0" prefHeight="85.0" prefWidth="616.0" vgap="8.0">
+         <children>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="A">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="B">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="C">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="D">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="E">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="F">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="G">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="H">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="I" textAlignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="J">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="K">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="L">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="M">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="N">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="O">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="P">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="Q">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="R">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="S">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="T">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="U">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="V">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="W">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="X">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="Y">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="Z">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </FlowPane>
+      <Text fx:id="text" layoutX="180.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="282.8033256530762">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Pane fx:id="e2" layoutX="296.0" layoutY="126.0" minHeight="-Infinity" minWidth="-Infinity" rotate="90.0" AnchorPane.leftAnchor="296.0" AnchorPane.rightAnchor="102.0">
+         <children>
+            <Line endX="100.0" layoutX="97.0" layoutY="45.0" startX="-80.0" />
+         </children>
+         <effect>
+            <Glow level="0.37" />
+         </effect>
+      </Pane>
+      <Pane fx:id="e4" layoutX="509.0" layoutY="46.0" prefHeight="77.0" prefWidth="65.0">
+         <children>
+            <Line endX="106.56031036376953" endY="0.8731436729431152" layoutX="-86.0" layoutY="13.0" rotate="90.0" startX="132.2010040283203" startY="0.3621559143066406" />
+            <Circle fill="DODGERBLUE" layoutX="34.0" layoutY="47.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </Pane>
+      <Pane fx:id="e5" layoutX="528.0" layoutY="117.0" prefHeight="92.0" prefWidth="27.0">
+         <children>
+            <Line endX="-13.333343505859375" endY="1.52587890625E-5" layoutX="71.0" layoutY="46.0" rotate="90.0" startX="-100.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="e6" layoutX="442.0" layoutY="109.0" prefHeight="49.0" prefWidth="200.0">
+         <children>
+            <Line endX="-47.666656494140625" endY="1.52587890625E-5" layoutX="193.0" layoutY="27.0" rotate="45.0" startX="-100.0" />
+            <Line endX="-47.666656494140625" endY="1.52587890625E-5" layoutX="154.0" layoutY="28.0" rotate="135.0" startX="-100.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="e7" layoutX="441.0" layoutY="191.0" prefHeight="58.0" prefWidth="157.0">
+         <children>
+            <Line endX="-47.666656494140625" endY="1.52587890625E-5" layoutX="197.0" layoutY="27.0" rotate="35.0" startX="-100.0" />
+            <Line endX="-47.666656494140625" endY="1.52587890625E-5" layoutX="152.0" layoutY="28.0" rotate="145.0" startX="-100.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="e1" layoutX="295.0" layoutY="220.0" prefHeight="19.0" prefWidth="200.0">
+         <children>
+            <Line endX="47.99998474121094" endY="1.52587890625E-5" layoutX="126.0" layoutY="9.0" startX="-100.0" />
+         </children>
+      </Pane>
+      <TextArea fx:id="meaning" editable="false" layoutX="14.0" layoutY="48.0" prefHeight="172.0" prefWidth="299.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextArea>
+      <Pane fx:id="e3" layoutX="395.0" layoutY="46.0" prefHeight="39.0" prefWidth="200.0">
+         <children>
+            <Line endX="43.999969482421875" endY="1.1444091796875E-5" layoutX="101.0" startX="-100.0" />
+         </children>
+      </Pane>
+      <Label fx:id="yay" alignment="BOTTOM_CENTER" layoutX="194.0" layoutY="7.0" prefHeight="39.0" prefWidth="253.0" textFill="#fd0000">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Button layoutX="14.0" layoutY="236.0" mnemonicParsing="false" onAction="#Replay" text="Replay" />
+   </children>
+</AnchorPane>

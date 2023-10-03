@@ -10,10 +10,6 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     public static void main(String[] args) throws Exception{
-        Dictionary test = new Dictionary();
-        test.LoadFile("src\\main\\resources\\dictest.txt");
-        System.out.println(test.FindWord("apple"));
-        test.SaveFile();
         launch();
     }
 

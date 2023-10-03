@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="637.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.UI_Dic">
    <children>
       <TextField fx:id="search" layoutX="33.0" layoutY="51.0" prefHeight="25.0" prefWidth="222.0" />
       <ListView fx:id="recommend" layoutX="44.0" layoutY="83.0" prefHeight="335.0" prefWidth="200.0" />
-      <TextArea fx:id="result" editable="false" layoutX="319.0" layoutY="51.0" prefHeight="365.0" prefWidth="270.0" wrapText="true">
+      <TextArea fx:id="result" editable="false" layoutX="319.0" layoutY="139.0" prefHeight="277.0" prefWidth="270.0" wrapText="true">
          <font>
             <Font name="Californian FB Bold" size="20.0" />
          </font></TextArea>
@@ -21,5 +25,32 @@
          </font>
       </Button>
       <Button layoutX="233.0" layoutY="13.0" mnemonicParsing="false" onAction="#newWord" prefHeight="32.0" prefWidth="103.0" text="New Word" textFill="#ba1e1e" />
+      <Label fx:id="TheWord" layoutX="319.0" layoutY="96.0" prefHeight="32.0" prefWidth="103.0">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button layoutX="517.0" layoutY="16.0" mnemonicParsing="false" onAction="#Gtranslate" text="Google Translate">
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.6482649962608746" focusAngle="-141.79" focusDistance="-0.27480920398508313" radius="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color green="0.6833333373069763" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
+      <Button layoutX="428.0" layoutY="51.0" mnemonicParsing="false" onAction="#read" text="Read" />
+      <Button layoutX="563.0" layoutY="99.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
+      <Button layoutX="563.0" layoutY="51.0" mnemonicParsing="false" onAction="#ShowHistory" text="History" />
+      <Button layoutX="259.0" layoutY="383.0" mnemonicParsing="false" onAction="#ShowGame" text="Game" />
    </children>
 </AnchorPane>
