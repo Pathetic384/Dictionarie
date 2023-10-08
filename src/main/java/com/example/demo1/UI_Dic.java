@@ -160,16 +160,21 @@ public class UI_Dic implements Initializable {
     }
 
     public void delete(ActionEvent event) throws Exception {
-
-        //System.out.println(testing.map.size());
-
+        if(Objects.equals(TheWord.getText(), "")) return;
+        String conf = "Do you really want to delete the word: " + TheWord.getText();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("really?");
+        alert.setContentText("U sure?");
+        alert.setHeaderText(conf);
+        Optional<ButtonType> alertResult = alert.showAndWait();
+        if(alertResult.get() != ButtonType.OK) {
+            return;
+        }
         String del = TheWord.getText();
         Word word = new Word(del, result.getText());
         testing.map.remove(del);
 
         testing.SaveFile();
-        //System.out.println(testing.map.size());
-
 
         Parent root = FXMLLoader.load(getClass().getResource("dict.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
