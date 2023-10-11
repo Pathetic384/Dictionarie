@@ -19,10 +19,6 @@ import java.util.TreeMap;
 
 public class AddWord {
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     @FXML
     private TextArea adding;
     @FXML
@@ -32,11 +28,7 @@ public class AddWord {
     private final String path = "src\\main\\resources\\dictest.txt";
 
     public void Return(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("dict.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("dict.fxml", event);
     }
 
     public void wordAdd(ActionEvent event) throws Exception {

@@ -28,8 +28,6 @@ vịt
 anh
 |hello
 world
-|test
-ing
 |ui
 chan
 |you

@@ -26,9 +26,6 @@ import java.util.ResourceBundle;
 import java.util.TreeMap;
 
 public class History implements Initializable {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
     @FXML
     private ListView<String> searched;
@@ -111,11 +108,7 @@ public class History implements Initializable {
     }
 
     public void Return(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("dict.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("dict.fxml", event);
     }
 
     public void DeleteHistory(ActionEvent event) throws Exception {
@@ -151,12 +144,7 @@ public class History implements Initializable {
             }
         }
 
-
-        Parent root = FXMLLoader.load(getClass().getResource("history.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("history.fxml", event);
     }
 
     public void ClearHistory(ActionEvent event) throws Exception {
@@ -200,11 +188,7 @@ public class History implements Initializable {
         }
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("history.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("history.fxml", event);
     }
 
 }
