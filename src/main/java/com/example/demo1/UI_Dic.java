@@ -4,23 +4,15 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.sql.*;
-
-import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
@@ -30,6 +22,8 @@ import com.sun.speech.freetts.VoiceManager;
 
 public class UI_Dic implements Initializable {
 
+    private double x = 0;
+    private double y = 0;
     @FXML
     private TextField search;
     @FXML
@@ -41,10 +35,6 @@ public class UI_Dic implements Initializable {
     @FXML
     private Label TheWord;
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     Connection connection = null;
     PreparedStatement psInsert = null;
 
@@ -55,7 +45,6 @@ public class UI_Dic implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-
         try {testing.LoadFile(path);}
         catch (Exception e) {}
 
@@ -128,35 +117,24 @@ public class UI_Dic implements Initializable {
     }
 
     public void newWord(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("addword.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("addword.fxml", event);
     }
 
     public void Gtranslate(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("googletranslate.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("googletranslate.fxml", event);
     }
 
     public void ShowHistory(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("history.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("history.fxml", event);
     }
 
     public void ShowGame(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("game.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("game.fxml", event);
+    }
+
+    public void Exit(ActionEvent event) throws Exception {
+        Stage stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     public void delete(ActionEvent event) throws Exception {
@@ -176,11 +154,7 @@ public class UI_Dic implements Initializable {
 
         testing.SaveFile();
 
-        Parent root = FXMLLoader.load(getClass().getResource("dict.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("dict.fxml", event);
     }
 
     public void AddToSQL (String word, String meaning) {

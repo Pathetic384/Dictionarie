@@ -20,9 +20,6 @@ import java.net.URL;
 import java.util.*;
 
 public class Game implements Initializable {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
     @FXML
     private Pane e1;
@@ -135,19 +132,11 @@ public class Game implements Initializable {
     }
 
     public void Return(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("dict.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("dict.fxml", event);
     }
 
     public void Replay(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("game.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("game.fxml", event);
     }
 
 }
