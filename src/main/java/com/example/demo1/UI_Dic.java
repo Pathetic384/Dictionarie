@@ -116,14 +116,6 @@ public class UI_Dic implements Initializable {
         }
     }
 
-    public void synonyms(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("synonyms.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
     public void read(ActionEvent event) throws Exception {
         System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
         Voice voice = VoiceManager.getInstance().getVoice("kevin16");
@@ -149,6 +141,10 @@ public class UI_Dic implements Initializable {
 
     public void ShowGame(ActionEvent event) throws Exception {
         SwitchScene s = new SwitchScene("game.fxml", event);
+    }
+
+    public void synonyms(ActionEvent event) throws Exception {
+        SwitchScene s = new SwitchScene("synonyms.fxml", event);
     }
 
     public void Exit(ActionEvent event) throws Exception {

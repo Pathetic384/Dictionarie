@@ -1,7 +1,7 @@
 package com.example.demo1;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -21,6 +21,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("dict.fxml"));
         Scene scene = new Scene(root);
 
+        Image icon = new Image("gato.jpg");
+        stage.getIcons().add(icon);
         stage.initStyle(StageStyle.TRANSPARENT);
         root.setOnMousePressed(mouseEvent -> {
             x = mouseEvent.getSceneX();

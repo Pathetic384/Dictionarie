@@ -37,18 +37,14 @@ public class Synonyms {
     }
 
     public void Back(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("dict.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("dict.fxml", event);
     }
 
     public String Syn(String text) {
         //  Get the synsets containing the word form=capicity
         String res = "";
 
-        File f = new File("/Users/phamngocthachha/Downloads/WordNet-3.0/dict/");
+        File f = new File("src/main/resources/dict");
         System.setProperty("wordnet.database.dir", f.toString());
         //setting path for the WordNet Directory
 
