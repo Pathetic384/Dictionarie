@@ -23,6 +23,8 @@ public class Main extends Application {
 
         Image icon = new Image("gato.jpg");
         stage.getIcons().add(icon);
+        stage.setTitle("Dictionarie B)");
+
         stage.initStyle(StageStyle.TRANSPARENT);
         root.setOnMousePressed(mouseEvent -> {
             x = mouseEvent.getSceneX();

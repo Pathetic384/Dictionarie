@@ -1,5 +1,3 @@
-|AB
-ab
 |angle
 tiên
 tiền
@@ -27,6 +25,8 @@ vịt
 anh
 |hello
 world
+|polar
+bear
 |ui
 chan
 |you

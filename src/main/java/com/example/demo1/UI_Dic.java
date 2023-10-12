@@ -1,5 +1,7 @@
 package com.example.demo1;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 import javafx.beans.value.ChangeListener;
@@ -16,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -39,12 +42,16 @@ public class UI_Dic implements Initializable {
     @FXML
     private TextArea result;
     @FXML
-    private Button enter;
-    @FXML
     private Label TheWord;
-
-    private Stage stage;
-    private Scene scene;
+    @FXML
+    private StackPane root;
+    @FXML
+    private JFXDialog dialog;
+    @FXML
+    private JFXButton acceptButton;
+    @FXML
+    private JFXButton declineButton;
+    private ActionEvent event;
 
     Connection connection = null;
     PreparedStatement psInsert = null;
@@ -89,7 +96,6 @@ public class UI_Dic implements Initializable {
 
             }
         });
-
         recommend.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
@@ -102,7 +108,20 @@ public class UI_Dic implements Initializable {
                 }
             }
         });
+        dialog.setDialogContainer(root);
 
+        declineButton.setOnAction(actionEvent -> {
+            dialog.close();
+        });
+
+        acceptButton.setOnAction(actionEvent -> {
+            try {
+                Deleted();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            dialog.close();
+        });
     }
 
     public void confirm(ActionEvent event) throws Exception {
@@ -153,22 +172,14 @@ public class UI_Dic implements Initializable {
     }
 
     public void delete(ActionEvent event) throws Exception {
-        if(Objects.equals(TheWord.getText(), "")) return;
-        String conf = "Do you really want to delete the word: " + TheWord.getText();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("really?");
-        alert.setContentText("U sure?");
-        alert.setHeaderText(conf);
-        Optional<ButtonType> alertResult = alert.showAndWait();
-        if(alertResult.get() != ButtonType.OK) {
-            return;
-        }
+        dialog.show();
+        this.event = event;
+    }
+    public void Deleted() throws Exception {
         String del = TheWord.getText();
         Word word = new Word(del, result.getText());
         testing.map.remove(del);
-
         testing.SaveFile();
-
         SwitchScene s = new SwitchScene("dict.fxml", event);
     }
 
