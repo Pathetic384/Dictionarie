@@ -1,29 +1,25 @@
 package com.example.demo1;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
+import javafx.scene.layout.StackPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.TreeMap;
 
 public class History implements Initializable {
 
@@ -33,6 +29,16 @@ public class History implements Initializable {
     private Label word;
     @FXML
     private TextArea meaning;
+    @FXML
+    private StackPane root;
+    @FXML
+    private JFXDialog dialog;
+    @FXML
+    private JFXButton acceptButton;
+    @FXML
+    private JFXButton declineButton;
+
+    private ActionEvent event;
 
     Dictionary testing = new Dictionary();
     ObservableList<String> list = FXCollections.observableArrayList();
@@ -48,7 +54,6 @@ public class History implements Initializable {
 
         try {testing.LoadFile(path);}
         catch (Exception e) {}
-
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/history", "root", "papcusun");
@@ -105,7 +110,20 @@ public class History implements Initializable {
             }
         });
 
+        dialog.setDialogContainer(root);
+        declineButton.setOnAction(actionEvent -> {
+            dialog.close();
+        });
+        acceptButton.setOnAction(actionEvent -> {
+            try {
+                Cleared();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            dialog.close();
+        });
     }
+
 
     public void Return(ActionEvent event) throws Exception {
         SwitchScene s = new SwitchScene("dict.fxml", event);
@@ -148,15 +166,11 @@ public class History implements Initializable {
     }
 
     public void ClearHistory(ActionEvent event) throws Exception {
+        this.event = event;
+        dialog.show();
+    }
 
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("really?");
-        alert.setContentText("U sure?");
-        alert.setHeaderText("Do you really want to clear the searching history?");
-        Optional<ButtonType> alertResult = alert.showAndWait();
-        if(alertResult.get() != ButtonType.OK) {
-            return;
-        }
+    public void Cleared() throws IOException {
 
         String text = word.getText();
 
@@ -186,7 +200,6 @@ public class History implements Initializable {
                 }
             }
         }
-
 
         SwitchScene s = new SwitchScene("history.fxml", event);
     }
