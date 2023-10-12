@@ -45,7 +45,7 @@ public class History implements Initializable {
     PreparedStatement prepare = null;
     ResultSet resultset = null;
 
-    private final String path = "src\\main\\resources\\dictest.txt";
+    private final String path = "src/main/resources/dictest.txt";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){

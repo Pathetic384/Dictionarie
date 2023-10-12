@@ -25,7 +25,7 @@ public class AddWord {
     private TextArea meaning;
 
     Dictionary testing = new Dictionary();
-    private final String path = "src\\main\\resources\\dictest.txt";
+    private final String path = "src/main/resources/dictest.txt";
 
     public void Return(ActionEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("dict.fxml"));

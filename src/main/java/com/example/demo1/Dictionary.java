@@ -44,7 +44,7 @@ public class Dictionary {
     }
 
     public void SaveFile() throws Exception {
-        BufferedWriter bw = new BufferedWriter(new FileWriter("src\\main\\resources\\dictest.txt"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/dictest.txt"));
         for (String i : map.keySet()) {
             Word w = map.get(i);
             bw.write("|");

@@ -1,10 +1,11 @@
 package com.example.demo1;
 
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,19 +15,17 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-import java.sql.*;
-
-import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.time.LocalDate;
-import java.util.*;
-
-import com.sun.speech.freetts.Voice;
-import com.sun.speech.freetts.VoiceManager;
+import java.util.Objects;
+import java.util.ResourceBundle;
+import java.util.TreeMap;
 
 public class UI_Dic implements Initializable {
 
@@ -51,7 +50,7 @@ public class UI_Dic implements Initializable {
     Dictionary testing = new Dictionary();
     ObservableList<String> list = FXCollections.observableArrayList();
 
-    private final String path = "src\\main\\resources\\dictest.txt";
+    private final String path = "src/main/resources/dictest.txt";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
@@ -114,6 +113,14 @@ public class UI_Dic implements Initializable {
             TheWord.setText(text);
             AddToSQL(text, ans);
         }
+    }
+
+    public void synonyms(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("synonyms.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void read(ActionEvent event) throws Exception {

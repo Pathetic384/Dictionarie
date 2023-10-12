@@ -52,5 +52,6 @@
       <Button layoutX="563.0" layoutY="99.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
       <Button layoutX="563.0" layoutY="51.0" mnemonicParsing="false" onAction="#ShowHistory" text="History" />
       <Button layoutX="259.0" layoutY="383.0" mnemonicParsing="false" onAction="#ShowGame" text="Game" />
+      <Button layoutX="250.0" layoutY="183.0" mnemonicParsing="false" onAction="#synonyms" text="Synonyms" />
    </children>
 </AnchorPane>

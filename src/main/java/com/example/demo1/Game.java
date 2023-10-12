@@ -48,7 +48,7 @@ public class Game implements Initializable {
     private Label yay;
 
     Dictionary testing = new Dictionary();
-    private final String path = "src\\main\\resources\\dictest.txt";
+    private final String path = "src/main/resources/dictest.txt";
 
     private int right;
     private int wrong;
@@ -61,7 +61,7 @@ public class Game implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Scanner sc = null;
         try {
-            sc = new Scanner(new File("src\\main\\resources\\gamewords.txt"));
+            sc = new Scanner(new File("src/main/resources/gamewords.txt"));
             testing.LoadFile(path);
         } catch (Exception e) {
 
@@ -129,7 +129,7 @@ public class Game implements Initializable {
             else if(wrong ==7) {
                 e7.setVisible(true);
                 butts.setDisable(true);
-                yay.setText("skill issues? ,':/ ");
+                yay.setText("u stpid ? ,':/ ");
             }
         }
     }

@@ -1,12 +1,11 @@
+|AB
+ab
 |angle
 tiên
 tiền
 |apple
 táoo
 áp pồ
-|average
-trung bình
-tb
 |book
 sách
 vở
