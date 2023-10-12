@@ -19,16 +19,20 @@
 
 .exit_button
 {
-    -fx-background-color: #b4c1bc;
+    -fx-background-color: #4ab4de;
     -fx-background-radius: 10 10 10 10;
 }
 .exit_button:hover
 {
-    -fx-background-color: #f5b784;
+    -fx-background-color: #def3f6;
     -fx-background-radius: 10 10 10 10;
 }
 .exit_button:pressed
 {
-    -fx-background-color: #dd7d6d;
+    -fx-background-color: #345da7;
     -fx-background-radius: 10 10 10 10;
+}
+.top_panel
+{
+    -fx-background-color: linear-gradient(to left, #4ab4de, #ff80ed);
 }

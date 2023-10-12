@@ -19,6 +19,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class History implements Initializable {
@@ -48,6 +49,7 @@ public class History implements Initializable {
     ResultSet resultset = null;
 
     private final String path = "src/main/resources/dictest.txt";
+    public final String linky = "jdbc:sqlite:src/main/resources/sqlite.db";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
@@ -56,8 +58,9 @@ public class History implements Initializable {
         catch (Exception e) {}
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/history", "root", "papcusun");
-            prepare = connection.prepareStatement("SELECT * FROM save");
+            Class.forName("org.sqlite.JDBC");
+            connection = DriverManager.getConnection(linky);
+            prepare = connection.prepareStatement("SELECT * FROM history");
             resultset = prepare.executeQuery();
 
             while (resultset.next()) {
@@ -134,8 +137,9 @@ public class History implements Initializable {
         String text = word.getText();
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/history", "root", "papcusun");
-            prepare = connection.prepareStatement("DELETE FROM save WHERE word = ?");
+            Class.forName("org.sqlite.JDBC");
+            connection = DriverManager.getConnection(linky);
+            prepare = connection.prepareStatement("DELETE FROM history WHERE word = ?");
             prepare.setString(1, text);
             prepare.executeUpdate();
 
@@ -166,6 +170,7 @@ public class History implements Initializable {
     }
 
     public void ClearHistory(ActionEvent event) throws Exception {
+        if (Objects.equals(word.getText(), "")) return;
         this.event = event;
         dialog.show();
     }
@@ -175,8 +180,9 @@ public class History implements Initializable {
         String text = word.getText();
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/history", "root", "papcusun");
-            prepare = connection.prepareStatement("DELETE FROM save");
+            Class.forName("org.sqlite.JDBC");
+            connection = DriverManager.getConnection(linky);
+            prepare = connection.prepareStatement("DELETE FROM history");
             prepare.executeUpdate();
         }
         catch (Exception e) {

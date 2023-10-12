@@ -5,6 +5,8 @@ module com.example.demo1 {
     requires java.sql;
     requires jaws;
     requires com.jfoenix;
+    requires java.desktop;
+    requires voicerss.tts;
 
 
     opens com.example.demo1 to javafx.fxml;

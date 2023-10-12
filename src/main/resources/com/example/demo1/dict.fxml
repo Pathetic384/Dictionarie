@@ -3,72 +3,63 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDialog?>
 <?import com.jfoenix.controls.JFXDialogLayout?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.RadialGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="428.0" prefWidth="621.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.UI_Dic">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="637.0">
          <children>
-            <TextField fx:id="search" layoutX="33.0" layoutY="99.0" prefHeight="25.0" prefWidth="222.0" />
-            <ListView fx:id="recommend" layoutX="44.0" layoutY="131.0" prefHeight="300.0" prefWidth="200.0" />
-            <TextArea fx:id="result" editable="false" layoutX="319.0" layoutY="139.0" prefHeight="277.0" prefWidth="270.0" wrapText="true">
+            <TextArea fx:id="result" editable="false" focusTraversable="false" layoutX="331.0" layoutY="139.0" prefHeight="277.0" prefWidth="285.0" promptText="  Meaning" wrapText="true">
                <font>
-                  <Font name="Californian FB Bold" size="20.0" />
+                  <Font name="Candara Italic" size="20.0" />
                </font>
             </TextArea>
-            <Button fx:id="enter" layoutX="92.0" layoutY="57.0" mnemonicParsing="false" onAction="#confirm" prefHeight="38.0" prefWidth="103.0" text="Search" textFill="#269134" textOverrun="WORD_ELLIPSIS">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
-            <Button layoutX="231.0" layoutY="54.0" mnemonicParsing="false" onAction="#newWord" prefHeight="32.0" prefWidth="103.0" text="New Word" textFill="#ba1e1e" />
             <Label fx:id="TheWord" layoutX="319.0" layoutY="96.0" prefHeight="32.0" prefWidth="103.0">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Button layoutX="401.0" layoutY="63.0" mnemonicParsing="false" onAction="#Gtranslate" text="Google Translate">
-               <textFill>
-                  <RadialGradient centerX="0.5" centerY="0.6482649962608746" focusAngle="-141.79" focusDistance="-0.27480920398508313" radius="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color green="0.6833333373069763" blue="1.0" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </RadialGradient>
-               </textFill>
-            </Button>
-            <Button layoutX="433.0" layoutY="98.0" mnemonicParsing="false" onAction="#read" text="Read" />
-            <Button layoutX="565.0" layoutY="106.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
-            <Button layoutX="563.0" layoutY="70.0" mnemonicParsing="false" onAction="#ShowHistory" text="History" />
-            <Button layoutX="259.0" layoutY="383.0" mnemonicParsing="false" onAction="#ShowGame" text="Game" />
-            <Button layoutX="247.0" layoutY="184.0" mnemonicParsing="false" onAction="#synonyms" text="Synonyms" />
-            <AnchorPane layoutX="-1.0" layoutY="7.0" prefHeight="38.0" prefWidth="621.0" style="-fx-background-color: #b4c1bc;">
+            <JFXTextField fx:id="search" layoutX="40.0" layoutY="79.0" prefHeight="32.0" prefWidth="208.0" promptText="Find your word" unFocusColor="#a511cf">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </JFXTextField>
+            <JFXListView fx:id="recommend" layoutX="46.0" layoutY="130.0" prefHeight="295.0" prefWidth="196.0" />
+            <JFXButton fx:id="enter" buttonType="RAISED" layoutX="254.0" layoutY="252.0" onAction="#confirm" prefHeight="38.0" prefWidth="69.0" style="-fx-background-color: #a72090;" text="Search" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="465.0" layoutY="86.0" onAction="#read" style="-fx-background-color: #03f0d4;" stylesheets="@../../../style.css" text="Read">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="536.0" layoutY="86.0" onAction="#delete" style="-fx-background-color: #03f0d4;" stylesheets="@../../../style.css" text="Delete">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <AnchorPane layoutX="-1.0" layoutY="7.0" prefHeight="38.0" prefWidth="621.0" styleClass="top_panel" stylesheets="@../../../style.css">
                <children>
                   <Button layoutX="602.0" layoutY="4.0" mnemonicParsing="false" onAction="#Exit" prefHeight="29.0" prefWidth="17.0" styleClass="exit_button" stylesheets="@../../../style.css" text="X">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
+                  <JFXHamburger fx:id="hamburger" layoutX="22.0" layoutY="9.0" />
                </children>
             </AnchorPane>
+            <JFXDrawer fx:id="drawer" defaultDrawerSize="180.0" layoutX="7.0" layoutY="45.0" prefHeight="392.0" prefWidth="167.0" />
          </children>
       </AnchorPane>
       <JFXDialog fx:id="dialog">

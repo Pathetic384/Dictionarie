@@ -1,9 +1,11 @@
 package com.example.demo1;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.*;
+import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
+import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
+import com.voicerss.tts.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -18,9 +20,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -33,12 +43,14 @@ import java.util.TreeMap;
 
 public class UI_Dic implements Initializable {
 
-    private double x = 0;
-    private double y = 0;
     @FXML
-    private TextField search;
+    private JFXHamburger hamburger;
     @FXML
-    private ListView<String> recommend;
+    private JFXDrawer drawer;
+    @FXML
+    private JFXTextField search;
+    @FXML
+    private JFXListView<String> recommend;
     @FXML
     private TextArea result;
     @FXML
@@ -52,6 +64,8 @@ public class UI_Dic implements Initializable {
     @FXML
     private JFXButton declineButton;
     private ActionEvent event;
+    @FXML
+    private Button butt;
 
     Connection connection = null;
     PreparedStatement psInsert = null;
@@ -61,39 +75,32 @@ public class UI_Dic implements Initializable {
 
     private final String path = "src/main/resources/dictest.txt";
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle){
-        try {testing.LoadFile(path);}
-        catch (Exception e) {}
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle)
+    {
+        VBox box = null;
+        try {testing.LoadFile(path);
+                box = FXMLLoader.load(getClass().getResource("menu.fxml"));}
+        catch (Exception e) {}
         TreeMap<String, Word> map = testing.map;
         System.out.println(map.size());
-
         search.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-                String finding = search.getText().trim();
-               // System.out.println(finding);
-
+                String finding = search.getText().trim().toLowerCase();
                 for(String i : map.keySet()) {
                     if(i.startsWith(finding)) {
-                        //System.out.println("found");
                         list.add(i);
-
                     }
-                    else{
-
-                    }
+                    else{}
                 }
-
                 recommend.getItems().clear();
                 recommend.getItems().addAll(list);
                 list.clear();
-
                 if(finding.isEmpty()) {
-                    //recommend.getItems().clear();
+                    // recommend.getItems().clear();
                 }
-
             }
         });
         recommend.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -108,12 +115,11 @@ public class UI_Dic implements Initializable {
                 }
             }
         });
-        dialog.setDialogContainer(root);
 
+        dialog.setDialogContainer(root);
         declineButton.setOnAction(actionEvent -> {
             dialog.close();
         });
-
         acceptButton.setOnAction(actionEvent -> {
             try {
                 Deleted();
@@ -121,6 +127,53 @@ public class UI_Dic implements Initializable {
                 throw new RuntimeException(e);
             }
             dialog.close();
+        });
+
+        drawer.setSidePane(box);
+            for (Node node : box.getChildren()) {
+                if (node.getAccessibleText() != null) {
+                    node.addEventHandler(MouseEvent.MOUSE_CLICKED, (e) -> {
+                        switch (node.getAccessibleText()) {
+                            case "game":
+                                try { SwitchScene s = new SwitchScene("game.fxml", e);}
+                                catch (Exception ex) {}
+                                break;
+                            case "history":
+                                try { SwitchScene s = new SwitchScene("history.fxml", e);}
+                                catch (Exception ex) {}
+                                break;
+                            case "newword":
+                                try { SwitchScene s = new SwitchScene("addword.fxml", e);}
+                                catch (Exception ex) {}
+                                break;
+                            case "synonyms":
+                                try { SwitchScene s = new SwitchScene("synonyms.fxml", e);}
+                                catch (Exception ex) {}
+                                break;
+                            case "googletranslate":
+                                try { SwitchScene s = new SwitchScene("googletranslate.fxml", e);}
+                                catch (Exception ex) {}
+                                break;
+                        }
+                    });
+                }
+            }
+        HamburgerSlideCloseTransition closing = new HamburgerSlideCloseTransition(hamburger);
+        closing.setRate(-1);
+        drawer.setDisable(true);
+        hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
+            closing.setRate(closing.getRate()*-1);
+            closing.play();
+            if (drawer.isShown())
+            {
+                drawer.close();
+                drawer.setDisable(true);
+            }
+            else
+            {
+                drawer.open();
+                drawer.setDisable(false);
+            }
         });
     }
 
@@ -136,34 +189,25 @@ public class UI_Dic implements Initializable {
     }
 
     public void read(ActionEvent event) throws Exception {
-        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
-        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
-        if (!Objects.equals(TheWord.getText(), "")) {
-            if (voice != null) {
-                voice.allocate();
-                voice.speak(TheWord.getText());
-            } else throw new IllegalStateException("Cannot find voice: kevin16");
-        }
-    }
-
-    public void newWord(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene("addword.fxml", event);
-    }
-
-    public void Gtranslate(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene("googletranslate.fxml", event);
-    }
-
-    public void ShowHistory(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene("history.fxml", event);
-    }
-
-    public void ShowGame(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene("game.fxml", event);
-    }
-
-    public void synonyms(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene("synonyms.fxml", event);
+        if (Objects.equals(search.getText(), "")) return;
+        String PATH = "src/main/resources/audio.wav";
+        VoiceProvider tts = new VoiceProvider("147452064f4d4c8e9217c6863b45990f");
+        VoiceParameters params = new VoiceParameters(TheWord.getText(), Languages.English_UnitedStates);
+        params.setCodec(AudioCodec.WAV);
+        params.setFormat(AudioFormat.Format_44KHZ.AF_44khz_16bit_stereo);
+        params.setBase64(false);
+        params.setSSML(false);
+        params.setRate(0);
+        byte[] voice = tts.speech(params);
+        FileOutputStream fos = new FileOutputStream(PATH);
+        fos.write(voice, 0, voice.length);
+        fos.flush();
+        fos.close();
+        File audioFile = new File(PATH);
+        AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioStream);
+        clip.start();
     }
 
     public void Exit(ActionEvent event) throws Exception {
@@ -172,6 +216,7 @@ public class UI_Dic implements Initializable {
     }
 
     public void delete(ActionEvent event) throws Exception {
+        if (Objects.equals(search.getText(), "")) return;
         dialog.show();
         this.event = event;
     }
@@ -185,8 +230,9 @@ public class UI_Dic implements Initializable {
 
     public void AddToSQL (String word, String meaning) {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/history", "root", "papcusun");
-            psInsert = connection.prepareStatement("INSERT INTO save (time, word, meaning) VALUES (?, ?, ?)");
+            Class.forName("org.sqlite.JDBC");
+            connection = DriverManager.getConnection("jdbc:sqlite:src/main/resources/sqlite.db");
+            psInsert = connection.prepareStatement("INSERT INTO history VALUES (?, ?, ?)");
             LocalDate now = LocalDate.now();
             psInsert.setString(1, now.toString());
             psInsert.setString(2, word);

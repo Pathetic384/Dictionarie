@@ -2,20 +2,14 @@ package com.example.demo1;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.*;
 
@@ -78,7 +72,7 @@ public class Game implements Initializable {
         wrong = 0;
 
         word = getRandomWord();
-        meaning.setText(testing.FindWord(word));
+
         System.out.println(word);
         word = word.toUpperCase();
         setText = "";
@@ -99,6 +93,9 @@ public class Game implements Initializable {
     }
 
     public void clicked(ActionEvent event) throws Exception {
+        try {testing.LoadFile(path);
+        } catch (Exception e) {}
+
         ((Button) event.getSource()).setDisable(true);
         String letter = ((Button)event.getSource()).getText();
         if(word.contains(letter)) {
@@ -120,7 +117,11 @@ public class Game implements Initializable {
             if(wrong == 1) e1.setVisible(true);
             else if(wrong ==2) e2.setVisible(true);
             else if(wrong ==3) e3.setVisible(true);
-            else if(wrong ==4) e4.setVisible(true);
+            else if(wrong ==4)
+            {
+                e4.setVisible(true);
+                meaning.setText(testing.FindWord(word.toLowerCase()));
+            }
             else if(wrong ==5) e5.setVisible(true);
             else if(wrong ==6) e6.setVisible(true);
             else if(wrong ==7) {
