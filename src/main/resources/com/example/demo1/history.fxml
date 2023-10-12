@@ -7,17 +7,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.History">
    <children>
       <ListView fx:id="searched" layoutX="21.0" layoutY="127.0" prefHeight="259.0" prefWidth="557.0" />
-      <Label fx:id="word" layoutX="174.0" layoutY="26.0" prefHeight="25.0" prefWidth="41.0">
+      <Label fx:id="word" layoutX="76.0" layoutY="20.0" prefHeight="26.0" prefWidth="198.0">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
       <TextArea fx:id="meaning" editable="false" layoutX="283.0" layoutY="14.0" prefHeight="101.0" prefWidth="301.0" />
-      <Button layoutX="216.0" layoutY="74.0" mnemonicParsing="false" onAction="#DeleteHistory" text="Delete" />
+      <Button layoutX="223.0" layoutY="52.0" mnemonicParsing="false" onAction="#DeleteHistory" text="Delete" />
       <Button layoutX="21.0" layoutY="20.0" mnemonicParsing="false" onAction="#Return" text="Back" />
+      <Button layoutX="226.0" layoutY="89.0" mnemonicParsing="false" onAction="#ClearHistory" text="Clear" textFill="#ed0a0a" />
    </children>
 </AnchorPane>

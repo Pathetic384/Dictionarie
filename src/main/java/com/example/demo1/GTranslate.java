@@ -31,10 +31,6 @@ public class GTranslate implements Initializable {
     @FXML
     TextArea text2;
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     String language1 = "en";
     String language2 = "vi";
 
@@ -45,11 +41,7 @@ public class GTranslate implements Initializable {
     }
 
     public void Back(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("dict.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("dict.fxml", event);
     }
 
     public void Change(ActionEvent event) throws Exception {

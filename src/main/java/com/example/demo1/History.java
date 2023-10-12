@@ -12,9 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -23,13 +21,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 
 public class History implements Initializable {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
     @FXML
     private ListView<String> searched;
@@ -112,11 +108,7 @@ public class History implements Initializable {
     }
 
     public void Return(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("dict.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("dict.fxml", event);
     }
 
     public void DeleteHistory(ActionEvent event) throws Exception {
@@ -152,12 +144,51 @@ public class History implements Initializable {
             }
         }
 
+        SwitchScene s = new SwitchScene("history.fxml", event);
+    }
 
-        Parent root = FXMLLoader.load(getClass().getResource("history.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void ClearHistory(ActionEvent event) throws Exception {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("really?");
+        alert.setContentText("U sure?");
+        alert.setHeaderText("Do you really want to clear the searching history?");
+        Optional<ButtonType> alertResult = alert.showAndWait();
+        if(alertResult.get() != ButtonType.OK) {
+            return;
+        }
+
+        String text = word.getText();
+
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/history", "root", "papcusun");
+            prepare = connection.prepareStatement("DELETE FROM save");
+            prepare.executeUpdate();
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        finally{
+            if( resultset!=null ) {
+                try {
+                    resultset.close();
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if( connection!=null ) {
+                try {
+                    connection.close();
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+        SwitchScene s = new SwitchScene("history.fxml", event);
     }
 
 }

@@ -24,11 +24,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 
 public class UI_Dic implements Initializable {
 
+    private double x = 0;
+    private double y = 0;
     @FXML
     private TextField search;
     @FXML
@@ -42,7 +45,6 @@ public class UI_Dic implements Initializable {
 
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
     Connection connection = null;
     PreparedStatement psInsert = null;
@@ -54,7 +56,6 @@ public class UI_Dic implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-
         try {testing.LoadFile(path);}
         catch (Exception e) {}
 
@@ -135,54 +136,44 @@ public class UI_Dic implements Initializable {
     }
 
     public void newWord(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("addword.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("addword.fxml", event);
     }
 
     public void Gtranslate(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("googletranslate.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("googletranslate.fxml", event);
     }
 
     public void ShowHistory(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("history.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("history.fxml", event);
     }
 
     public void ShowGame(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("game.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("game.fxml", event);
+    }
+
+    public void Exit(ActionEvent event) throws Exception {
+        Stage stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     public void delete(ActionEvent event) throws Exception {
-
-        //System.out.println(testing.map.size());
-
+        if(Objects.equals(TheWord.getText(), "")) return;
+        String conf = "Do you really want to delete the word: " + TheWord.getText();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("really?");
+        alert.setContentText("U sure?");
+        alert.setHeaderText(conf);
+        Optional<ButtonType> alertResult = alert.showAndWait();
+        if(alertResult.get() != ButtonType.OK) {
+            return;
+        }
         String del = TheWord.getText();
         Word word = new Word(del, result.getText());
         testing.map.remove(del);
 
         testing.SaveFile();
-        //System.out.println(testing.map.size());
 
-
-        Parent root = FXMLLoader.load(getClass().getResource("dict.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("dict.fxml", event);
     }
 
     public void AddToSQL (String word, String meaning) {

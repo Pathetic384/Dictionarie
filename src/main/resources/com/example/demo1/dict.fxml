@@ -11,26 +11,26 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="637.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.UI_Dic">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="637.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.UI_Dic">
    <children>
-      <TextField fx:id="search" layoutX="33.0" layoutY="51.0" prefHeight="25.0" prefWidth="222.0" />
-      <ListView fx:id="recommend" layoutX="44.0" layoutY="83.0" prefHeight="335.0" prefWidth="200.0" />
+      <TextField fx:id="search" layoutX="33.0" layoutY="86.0" prefHeight="25.0" prefWidth="222.0" />
+      <ListView fx:id="recommend" layoutX="44.0" layoutY="119.0" prefHeight="317.0" prefWidth="200.0" />
       <TextArea fx:id="result" editable="false" layoutX="319.0" layoutY="139.0" prefHeight="277.0" prefWidth="270.0" wrapText="true">
          <font>
             <Font name="Californian FB Bold" size="20.0" />
          </font></TextArea>
-      <Button fx:id="enter" layoutX="92.0" layoutY="10.0" mnemonicParsing="false" onAction="#confirm" prefHeight="38.0" prefWidth="103.0" text="Search" textFill="#269134" textOverrun="WORD_ELLIPSIS">
+      <Button fx:id="enter" layoutX="92.0" layoutY="45.0" mnemonicParsing="false" onAction="#confirm" prefHeight="38.0" prefWidth="103.0" text="Search" textFill="#269134" textOverrun="WORD_ELLIPSIS">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="233.0" layoutY="13.0" mnemonicParsing="false" onAction="#newWord" prefHeight="32.0" prefWidth="103.0" text="New Word" textFill="#ba1e1e" />
+      <Button layoutX="231.0" layoutY="51.0" mnemonicParsing="false" onAction="#newWord" prefHeight="32.0" prefWidth="103.0" text="New Word" textFill="#ba1e1e" />
       <Label fx:id="TheWord" layoutX="319.0" layoutY="96.0" prefHeight="32.0" prefWidth="103.0">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Button layoutX="517.0" layoutY="16.0" mnemonicParsing="false" onAction="#Gtranslate" text="Google Translate">
+      <Button layoutX="401.0" layoutY="63.0" mnemonicParsing="false" onAction="#Gtranslate" text="Google Translate">
          <textFill>
             <RadialGradient centerX="0.5" centerY="0.6482649962608746" focusAngle="-141.79" focusDistance="-0.27480920398508313" radius="1.0">
                <stops>
@@ -48,10 +48,19 @@
             </RadialGradient>
          </textFill>
       </Button>
-      <Button layoutX="428.0" layoutY="51.0" mnemonicParsing="false" onAction="#read" text="Read" />
-      <Button layoutX="563.0" layoutY="99.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
-      <Button layoutX="563.0" layoutY="51.0" mnemonicParsing="false" onAction="#ShowHistory" text="History" />
+      <Button layoutX="433.0" layoutY="98.0" mnemonicParsing="false" onAction="#read" text="Read" />
+      <Button layoutX="565.0" layoutY="106.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
+      <Button layoutX="563.0" layoutY="70.0" mnemonicParsing="false" onAction="#ShowHistory" text="History" />
       <Button layoutX="259.0" layoutY="383.0" mnemonicParsing="false" onAction="#ShowGame" text="Game" />
       <Button layoutX="250.0" layoutY="183.0" mnemonicParsing="false" onAction="#synonyms" text="Synonyms" />
+      <AnchorPane layoutY="-4.0" prefHeight="38.0" prefWidth="637.0" style="-fx-background-color: #b4c1bc;">
+         <children>
+            <Button layoutX="602.0" layoutY="4.0" mnemonicParsing="false" onAction="#Exit" prefHeight="29.0" prefWidth="23.0" styleClass="exit_button" stylesheets="@../../../style.css" text="X">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

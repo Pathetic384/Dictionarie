@@ -12,138 +12,137 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Game">
    <children>
       <Button focusTraversable="false" layoutX="30.0" layoutY="14.0" mnemonicParsing="false" onAction="#Return" text="Back" />
       <FlowPane fx:id="butts" alignment="TOP_CENTER" hgap="8.0" layoutX="13.0" layoutY="300.0" prefHeight="85.0" prefWidth="616.0" vgap="8.0">
          <children>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="A">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" prefWidth="20.0" stylesheets="@../../../style.css" text="A">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="B">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="B">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="C">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="C">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="D">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="D">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="E">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="E">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="F">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="F">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="G">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="G">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="H">
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="H">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="I" textAlignment="CENTER">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" prefWidth="20.0" stylesheets="@../../../style.css" text="I" textAlignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="J">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="J">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="K">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="K">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="L">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="L">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="M">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="M">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="N">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="N">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="O">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="O">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="P">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="P">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="Q">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="Q">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="R">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="R">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="S">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="S">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="T">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="T">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="U">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="U">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="V">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="V">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="W">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="W">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="X">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="X">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="Y">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="Y">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#clicked" text="Z">
+            <Button focusTraversable="false" minWidth="33.0" mnemonicParsing="false" onAction="#clicked" stylesheets="@../../../style.css" text="Z">
                <font>
                   <Font size="16.0" />
                </font>

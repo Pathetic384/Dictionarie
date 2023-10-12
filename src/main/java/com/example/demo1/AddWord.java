@@ -8,16 +8,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+import java.util.Optional;
 import java.util.TreeMap;
 
 public class AddWord {
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
     @FXML
     private TextArea adding;
@@ -28,14 +28,22 @@ public class AddWord {
     private final String path = "src/main/resources/dictest.txt";
 
     public void Return(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("dict.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchScene s = new SwitchScene("dict.fxml", event);
     }
 
     public void wordAdd(ActionEvent event) throws Exception {
+        if(Objects.equals(adding.getText(), "") || Objects.equals(meaning.getText(), "")) return;
+        String conf = "Do you really want to add the word: " + adding.getText();
+        String conf2 = "Definition: " + meaning.getText();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("really?");
+        alert.setContentText(conf2);
+        alert.setHeaderText(conf);
+        Optional<ButtonType> alertResult = alert.showAndWait();
+        if(alertResult.get() != ButtonType.OK) {
+            return;
+        }
+
         testing.LoadFile(path);
         TreeMap<String, Word> temp = testing.map;
         Word tmp = new Word (adding.getText(), meaning.getText());

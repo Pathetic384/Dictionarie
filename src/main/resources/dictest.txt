@@ -10,7 +10,6 @@ táoo
 sách
 vở
 |brand
-hãng
 new
 |cake
 bánh
@@ -28,8 +27,8 @@ vịt
 anh
 |hello
 world
-|test
-ing
+|ui
+chan
 |you
 bạn
 bích
