@@ -1,28 +1,23 @@
 package com.example.demo1;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.layout.StackPane;
-
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class History implements Initializable {
+public class History extends SwitchScene implements Initializable {
 
     @FXML
     private ListView<String> searched;
@@ -30,32 +25,21 @@ public class History implements Initializable {
     private Label word;
     @FXML
     private TextArea meaning;
-    @FXML
-    private StackPane root;
-    @FXML
-    private JFXDialog dialog;
-    @FXML
-    private JFXButton acceptButton;
-    @FXML
-    private JFXButton declineButton;
 
     private ActionEvent event;
 
-    Dictionary testing = new Dictionary();
     ObservableList<String> list = FXCollections.observableArrayList();
 
     Connection connection = null;
     PreparedStatement prepare = null;
     ResultSet resultset = null;
 
-    private final String path = "src/main/resources/dictest.txt";
+
     public final String linky = "jdbc:sqlite:src/main/resources/sqlite.db";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
 
-        try {testing.LoadFile(path);}
-        catch (Exception e) {}
 
         try {
             Class.forName("org.sqlite.JDBC");
@@ -69,7 +53,6 @@ public class History implements Initializable {
                 String meaning = resultset.getString(3);
                 String adding = time + "|    " + word;
                 list.add(adding);
-                //System.out.println(time + " " + word + " " + meaning);
             }
         }
         catch (Exception e) {
@@ -106,31 +89,18 @@ public class History implements Initializable {
                 String text2 = text[1];
                 text2 = text2.trim();
                 System.out.println(text2);
-                String ans = testing.FindWord(text2);
+                String ans = MainUI.testing.FindWord(text2);
                 meaning.setText(ans);
                 word.setText(text2);
 
             }
         });
 
-        dialog.setDialogContainer(root);
-        declineButton.setOnAction(actionEvent -> {
-            dialog.close();
-        });
-        acceptButton.setOnAction(actionEvent -> {
-            try {
-                Cleared();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-            dialog.close();
-        });
+
     }
 
 
-    public void Return(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene("dict.fxml", event);
-    }
+
 
     public void DeleteHistory(ActionEvent event) throws Exception {
 
@@ -166,16 +136,22 @@ public class History implements Initializable {
             }
         }
 
-        SwitchScene s = new SwitchScene("history.fxml", event);
+        Switch("history.fxml", MainUI.glob);
     }
 
     public void ClearHistory(ActionEvent event) throws Exception {
-        if (Objects.equals(word.getText(), "")) return;
-        this.event = event;
-        dialog.show();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("really?");
+        alert.setContentText("U sure?");
+        alert.setHeaderText("Do you really want to clear the searching history?");
+        Optional<ButtonType> alertResult = alert.showAndWait();
+        if(alertResult.get() != ButtonType.OK) {
+            return;
+        }
+        Cleared();
     }
 
-    public void Cleared() throws IOException {
+    public void Cleared() throws Exception {
 
         String text = word.getText();
 
@@ -207,7 +183,7 @@ public class History implements Initializable {
             }
         }
 
-        SwitchScene s = new SwitchScene("history.fxml", event);
+        Switch("history.fxml", MainUI.glob);
     }
 
 }

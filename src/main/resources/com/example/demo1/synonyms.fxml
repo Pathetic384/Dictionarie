@@ -6,38 +6,32 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Synonyms">
+<AnchorPane prefHeight="532.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Synonyms">
     <children>
 
-        <Label fx:id="label1" layoutX="120.0" layoutY="62.0" text="Word">
+        <Label fx:id="label1" layoutX="156.0" layoutY="62.0" text="Word">
             <font>
                 <Font size="17.0" />
             </font>
         </Label>
-        <Label fx:id="label2" layoutX="432.0" layoutY="62.0" text="Synonyms">
+        <Label fx:id="label2" layoutX="681.0" layoutY="62.0" text="Synonyms">
             <font>
                 <Font size="17.0" />
             </font>
         </Label>
-        <TextArea fx:id="text1" layoutX="46.0" layoutY="110.0" prefHeight="266.0" prefWidth="200.0" wrapText="true">
+        <TextArea fx:id="text1" layoutX="77.0" layoutY="129.0" prefHeight="363.0" prefWidth="228.0" wrapText="true">
             <font>
                 <Font size="17.0" />
             </font>
         </TextArea>
-        <TextArea fx:id="text2" editable="false" layoutX="366.0" layoutY="110.0" prefHeight="266.0" prefWidth="200.0" wrapText="true">
+        <TextArea fx:id="text2" editable="false" layoutX="551.0" layoutY="127.0" prefHeight="363.0" prefWidth="262.0" wrapText="true">
             <font>
                 <Font size="17.0" />
             </font>
         </TextArea>
-        <Button fx:id="find" layoutX="285.0" layoutY="200.0" mnemonicParsing="false" onAction="#Enter" text="Find">
+        <Button fx:id="find" layoutX="413.0" layoutY="281.0" mnemonicParsing="false" onAction="#Enter" text="Find">
             <font>
                 <Font size="14.0" />
-            </font>
-        </Button>
-        <Button fx:id="back" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" text="Back">
-            <font>
-                <Font size="15.0" />
             </font>
         </Button>
     </children>

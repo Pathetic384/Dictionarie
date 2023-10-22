@@ -4,44 +4,47 @@ import com.jfoenix.controls.JFXDialog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 import java.net.URL;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 
-public class AddWord implements Initializable {
+public class AddWord extends SwitchScene implements Initializable {
 
     @FXML
     private TextArea adding;
     @FXML
     private TextArea meaning;
-    @FXML
-    private StackPane root;
-    @FXML
-    private JFXDialog dialog;
-    @FXML
-    private JFXButton acceptButton;
-    @FXML
-    private JFXButton declineButton;
 
 
     Dictionary testing = new Dictionary();
-    private final String path = "src/main/resources/dictest.txt";
 
-    public void Return(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene("dict.fxml", event);
-    }
 
-    public void wordAdd(ActionEvent event) {
+    public void wordAdd(ActionEvent event) throws Exception {
         if(Objects.equals(adding.getText(), "") || Objects.equals(meaning.getText(), "")) return;
-        dialog.show();
+        String conf = "Do you really want to add the word: " + adding.getText();
+        String conf2 = "Definition: " + meaning.getText();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("really?");
+        alert.setContentText(conf2);
+        alert.setHeaderText(conf);
+        Optional<ButtonType> alertResult = alert.showAndWait();
+        if(alertResult.get() != ButtonType.OK) {
+            return;
+        }
+        addWord();
     }
 
     public void addWord() throws Exception {
-        testing.LoadFile(path);
+        testing = MainUI.testing;
         TreeMap<String, Word> temp = testing.map;
         Word tmp = new Word (adding.getText(), meaning.getText());
         temp.put(adding.getText(), tmp);
@@ -52,19 +55,6 @@ public class AddWord implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        dialog.setDialogContainer(root);
 
-        declineButton.setOnAction(actionEvent -> {
-            dialog.close();
-        });
-
-        acceptButton.setOnAction(actionEvent -> {
-            try {
-                addWord();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-            dialog.close();
-        });
     }
 }

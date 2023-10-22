@@ -18,7 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("dict.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("mainui.fxml"));
         Scene scene = new Scene(root);
 
         Image icon = new Image("gato.jpg");

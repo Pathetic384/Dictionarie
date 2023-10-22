@@ -27,13 +27,11 @@ anh
 world
 |polar
 bear
-|ui
-chan
+|what
+the heck
 |you
 bạn
 bích
 |zebra
 ngựa 
 vằn
-|testing something right now
-abc

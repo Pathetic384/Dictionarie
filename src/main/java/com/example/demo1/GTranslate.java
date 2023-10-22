@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -40,9 +41,7 @@ public class GTranslate implements Initializable {
         label2.setText("VN");
     }
 
-    public void Back(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene("dict.fxml", event);
-    }
+
 
     public void Change(ActionEvent event) throws Exception {
         String tmp = language1;

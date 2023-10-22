@@ -8,12 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-
 import java.io.File;
 import java.net.URL;
 import java.util.*;
 
-public class Game implements Initializable {
+public class Game extends SwitchScene implements Initializable {
 
     @FXML
     private Pane e1;
@@ -38,8 +37,6 @@ public class Game implements Initializable {
     @FXML
     private Label yay;
 
-    Dictionary testing = new Dictionary();
-    private final String path = "src/main/resources/dictest.txt";
 
     private int right;
     private int wrong;
@@ -53,7 +50,6 @@ public class Game implements Initializable {
         Scanner sc = null;
         try {
             sc = new Scanner(new File("src/main/resources/gamewords.txt"));
-            testing.LoadFile(path);
         } catch (Exception e) {
 
         }
@@ -93,8 +89,6 @@ public class Game implements Initializable {
     }
 
     public void clicked(ActionEvent event) throws Exception {
-        try {testing.LoadFile(path);
-        } catch (Exception e) {}
 
         ((Button) event.getSource()).setDisable(true);
         String letter = ((Button)event.getSource()).getText();
@@ -120,7 +114,7 @@ public class Game implements Initializable {
             else if(wrong ==4)
             {
                 e4.setVisible(true);
-                meaning.setText(testing.FindWord(word.toLowerCase()));
+                meaning.setText(MainUI.testing.FindWord(word.toLowerCase()));
             }
             else if(wrong ==5) e5.setVisible(true);
             else if(wrong ==6) e6.setVisible(true);
@@ -132,12 +126,10 @@ public class Game implements Initializable {
         }
     }
 
-    public void Return(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene("dict.fxml", event);
-    }
+
 
     public void Replay(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene("game.fxml", event);
+        Switch("game.fxml", MainUI.glob);
     }
 
 }

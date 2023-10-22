@@ -6,45 +6,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SwitchScene {
-    private double x = 0;
-    private double y = 0;
-    public Stage stage;
-    public Scene scene;
-    public Parent root;
+public abstract class SwitchScene {
 
-    SwitchScene(String path, ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource(path));
-        root.setOnMousePressed(mouseEvent -> {
-            x = mouseEvent.getSceneX();
-            y = mouseEvent.getY();
-        });
-        root.setOnMouseDragged(mouseEvent -> {
-            stage.setX(mouseEvent.getScreenX() - x);
-            stage.setY(mouseEvent.getScreenY() - y);
-        });
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    SwitchScene(String path, MouseEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource(path));
-        root.setOnMousePressed(mouseEvent -> {
-            x = mouseEvent.getSceneX();
-            y = mouseEvent.getY();
-        });
-        root.setOnMouseDragged(mouseEvent -> {
-            stage.setX(mouseEvent.getScreenX() - x);
-            stage.setY(mouseEvent.getScreenY() - y);
-        });
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+
+    public void Switch(String path, AnchorPane root) throws Exception {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource(path));
+        root.getChildren().setAll(pane);
     }
 }

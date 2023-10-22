@@ -10,13 +10,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class Synonyms {
+public class Synonyms extends SwitchScene{
     @FXML
     Label label1;
     @FXML
@@ -26,9 +27,7 @@ public class Synonyms {
     @FXML
     TextArea text2;
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+
 
     public void Enter(ActionEvent event) throws Exception {
         String text = text1.getText();
@@ -36,9 +35,7 @@ public class Synonyms {
         text2.setText(ans);
     }
 
-    public void Back(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene("dict.fxml", event);
-    }
+
 
     public String Syn(String text) {
         //  Get the synsets containing the word form=capicity

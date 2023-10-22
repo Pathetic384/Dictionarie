@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -41,12 +42,9 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 
-public class UI_Dic implements Initializable {
+public class UI_Dic extends SwitchScene implements Initializable {
 
-    @FXML
-    private JFXHamburger hamburger;
-    @FXML
-    private JFXDrawer drawer;
+
     @FXML
     private JFXTextField search;
     @FXML
@@ -55,35 +53,18 @@ public class UI_Dic implements Initializable {
     private TextArea result;
     @FXML
     private Label TheWord;
-    @FXML
-    private StackPane root;
-    @FXML
-    private JFXDialog dialog;
-    @FXML
-    private JFXButton acceptButton;
-    @FXML
-    private JFXButton declineButton;
-    private ActionEvent event;
-    @FXML
-    private Button butt;
+
 
     Connection connection = null;
     PreparedStatement psInsert = null;
 
-    Dictionary testing = new Dictionary();
     ObservableList<String> list = FXCollections.observableArrayList();
-
-    private final String path = "src/main/resources/dictest.txt";
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        VBox box = null;
-        try {testing.LoadFile(path);
-                box = FXMLLoader.load(getClass().getResource("menu.fxml"));}
-        catch (Exception e) {}
-        TreeMap<String, Word> map = testing.map;
+        TreeMap<String, Word> map = MainUI.testing.map;
         System.out.println(map.size());
         search.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
@@ -107,81 +88,23 @@ public class UI_Dic implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 String select = recommend.getSelectionModel().getSelectedItem();
-                String ans = testing.FindWord(select);
+                String ans = MainUI.testing.FindWord(select);
                 result.setText(ans);
                 TheWord.setText(select);
                 if(select != null) {
                     AddToSQL(select, ans);
                 }
+
             }
         });
 
-        dialog.setDialogContainer(root);
-        declineButton.setOnAction(actionEvent -> {
-            dialog.close();
-        });
-        acceptButton.setOnAction(actionEvent -> {
-            try {
-                Deleted();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-            dialog.close();
-        });
-
-        drawer.setSidePane(box);
-            for (Node node : box.getChildren()) {
-                if (node.getAccessibleText() != null) {
-                    node.addEventHandler(MouseEvent.MOUSE_CLICKED, (e) -> {
-                        switch (node.getAccessibleText()) {
-                            case "game":
-                                try { SwitchScene s = new SwitchScene("game.fxml", e);}
-                                catch (Exception ex) {}
-                                break;
-                            case "history":
-                                try { SwitchScene s = new SwitchScene("history.fxml", e);}
-                                catch (Exception ex) {}
-                                break;
-                            case "newword":
-                                try { SwitchScene s = new SwitchScene("addword.fxml", e);}
-                                catch (Exception ex) {}
-                                break;
-                            case "synonyms":
-                                try { SwitchScene s = new SwitchScene("synonyms.fxml", e);}
-                                catch (Exception ex) {}
-                                break;
-                            case "googletranslate":
-                                try { SwitchScene s = new SwitchScene("googletranslate.fxml", e);}
-                                catch (Exception ex) {}
-                                break;
-                        }
-                    });
-                }
-            }
-        HamburgerSlideCloseTransition closing = new HamburgerSlideCloseTransition(hamburger);
-        closing.setRate(-1);
-        drawer.setDisable(true);
-        hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
-            closing.setRate(closing.getRate()*-1);
-            closing.play();
-            if (drawer.isShown())
-            {
-                drawer.close();
-                drawer.setDisable(true);
-            }
-            else
-            {
-                drawer.open();
-                drawer.setDisable(false);
-            }
-        });
     }
 
     public void confirm(ActionEvent event) throws Exception {
 
         String text = search.getText();
-        if(testing.FindWord(text) != null) {
-            String ans = testing.FindWord(text);
+        if(MainUI.testing.FindWord(text) != null) {
+            String ans = MainUI.testing.FindWord(text);
             result.setText(ans);
             TheWord.setText(text);
             AddToSQL(text, ans);
@@ -210,22 +133,28 @@ public class UI_Dic implements Initializable {
         clip.start();
     }
 
-    public void Exit(ActionEvent event) throws Exception {
-        Stage stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-        stage.close();
-    }
 
     public void delete(ActionEvent event) throws Exception {
-        if (Objects.equals(search.getText(), "")) return;
-        dialog.show();
-        this.event = event;
+        if (Objects.equals(TheWord.getText(), "")) return;
+        String conf = "Do you really want to delete the word: " + TheWord.getText();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("really?");
+        alert.setContentText("U sure?");
+        alert.setHeaderText(conf);
+        Optional<ButtonType> alertResult = alert.showAndWait();
+        if(alertResult.get() != ButtonType.OK) {
+            return;
+        }
+        Deleted();
     }
+
     public void Deleted() throws Exception {
+
         String del = TheWord.getText();
-        Word word = new Word(del, result.getText());
-        testing.map.remove(del);
-        testing.SaveFile();
-        SwitchScene s = new SwitchScene("dict.fxml", event);
+        MainUI.testing.map.remove(del);
+        MainUI.testing.SaveFile();
+
+        Switch("dict.fxml", MainUI.glob);
     }
 
     public void AddToSQL (String word, String meaning) {
