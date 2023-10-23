@@ -114,7 +114,7 @@ public class Game extends SwitchScene implements Initializable {
             else if(wrong ==4)
             {
                 e4.setVisible(true);
-                meaning.setText(MainUI.testing.FindWord(word.toLowerCase()));
+                meaning.setText(MainUI.testing.FindMeaning(word.toLowerCase()));
             }
             else if(wrong ==5) e5.setVisible(true);
             else if(wrong ==6) e6.setVisible(true);

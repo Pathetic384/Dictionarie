@@ -26,8 +26,6 @@ public class History extends SwitchScene implements Initializable {
     @FXML
     private TextArea meaning;
 
-    private ActionEvent event;
-
     ObservableList<String> list = FXCollections.observableArrayList();
 
     Connection connection = null;
@@ -89,17 +87,14 @@ public class History extends SwitchScene implements Initializable {
                 String text2 = text[1];
                 text2 = text2.trim();
                 System.out.println(text2);
-                String ans = MainUI.testing.FindWord(text2);
+                String ans = MainUI.testing.FindMeaning(text2);
                 meaning.setText(ans);
                 word.setText(text2);
 
             }
         });
 
-
     }
-
-
 
 
     public void DeleteHistory(ActionEvent event) throws Exception {

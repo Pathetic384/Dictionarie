@@ -45,10 +45,7 @@ public class AddWord extends SwitchScene implements Initializable {
 
     public void addWord() throws Exception {
         testing = MainUI.testing;
-        TreeMap<String, Word> temp = testing.map;
-        Word tmp = new Word (adding.getText(), meaning.getText());
-        temp.put(adding.getText(), tmp);
-        testing.map = temp;
+        testing.insertWord(adding.getText(), meaning.getText());
         testing.SaveFile();
         System.out.println("Done!");
     }

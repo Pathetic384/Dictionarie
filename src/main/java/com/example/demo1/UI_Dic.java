@@ -64,23 +64,18 @@ public class UI_Dic extends SwitchScene implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        TreeMap<String, Word> map = MainUI.testing.map;
-        System.out.println(map.size());
+
         search.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
                 String finding = search.getText().trim().toLowerCase();
-                for(String i : map.keySet()) {
-                    if(i.startsWith(finding)) {
-                        list.add(i);
-                    }
-                    else{}
-                }
+
+                list = MainUI.testing.advanceSearch(finding);
                 recommend.getItems().clear();
                 recommend.getItems().addAll(list);
                 list.clear();
                 if(finding.isEmpty()) {
-                    // recommend.getItems().clear();
+                     recommend.getItems().clear();
                 }
             }
         });
@@ -88,7 +83,7 @@ public class UI_Dic extends SwitchScene implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 String select = recommend.getSelectionModel().getSelectedItem();
-                String ans = MainUI.testing.FindWord(select);
+                String ans = MainUI.testing.FindMeaning(select);
                 result.setText(ans);
                 TheWord.setText(select);
                 if(select != null) {
@@ -103,8 +98,8 @@ public class UI_Dic extends SwitchScene implements Initializable {
     public void confirm(ActionEvent event) throws Exception {
 
         String text = search.getText();
-        if(MainUI.testing.FindWord(text) != null) {
-            String ans = MainUI.testing.FindWord(text);
+        if(MainUI.testing.FindMeaning(text) != null) {
+            String ans = MainUI.testing.FindMeaning(text);
             result.setText(ans);
             TheWord.setText(text);
             AddToSQL(text, ans);
@@ -112,7 +107,7 @@ public class UI_Dic extends SwitchScene implements Initializable {
     }
 
     public void read(ActionEvent event) throws Exception {
-        if (Objects.equals(search.getText(), "")) return;
+        if (Objects.equals(TheWord.getText(), "")) return;
         String PATH = "src/main/resources/audio.wav";
         VoiceProvider tts = new VoiceProvider("147452064f4d4c8e9217c6863b45990f");
         VoiceParameters params = new VoiceParameters(TheWord.getText(), Languages.English_UnitedStates);
@@ -151,7 +146,7 @@ public class UI_Dic extends SwitchScene implements Initializable {
     public void Deleted() throws Exception {
 
         String del = TheWord.getText();
-        MainUI.testing.map.remove(del);
+        MainUI.testing.DeleteWord(del);
         MainUI.testing.SaveFile();
 
         Switch("dict.fxml", MainUI.glob);

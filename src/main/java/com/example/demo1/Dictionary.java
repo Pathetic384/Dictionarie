@@ -1,10 +1,12 @@
 package com.example.demo1;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.io.*;
-import java.util.HashMap;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Dictionary {
-    public TreeMap<String, Word> map = new TreeMap<String, Word>();
+    private TrieNode root = new TrieNode();
 
     public void LoadFile(String path) throws Exception{
         BufferedReader br = new BufferedReader(new FileReader(path));
@@ -16,9 +18,7 @@ public class Dictionary {
         for (String line = br.readLine(); line != null; line = br.readLine()) {
 
             if ( line.startsWith("|") ) {
-                Word word = new Word(en.trim(), vn.trim());
-                map.put(en, word);
-
+                insertWord(en.trim(),vn.trim());
                 en = "";
                 vn = "";
                 en += line;
@@ -28,31 +28,94 @@ public class Dictionary {
                 vn += line + "\n";
             }
         }
-        Word word = new Word(en.trim(), vn.trim());
-        map.put(en, word);
+        insertWord(en.trim(),vn.trim());
         br.close();
-    }
-
-    public String FindWord(String word) {
-        for(String i : map.keySet()) {
-            if(i.equals(word)) {
-                Word ans = map.get(i);
-                return ans.getMeaning();
-            }
-        }
-        return null;
     }
 
     public void SaveFile() throws Exception {
         BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/dictest.txt"));
-        for (String i : map.keySet()) {
-            Word w = map.get(i);
+        List<String> allWord = new ArrayList<>();
+        allWord = advanceSearch("");
+        for (String i : allWord) {
             bw.write("|");
-            bw.write(w.getWord());
+            bw.write(i);
             bw.write("\n");
-            bw.write(w.getMeaning());
+            bw.write(FindMeaning(i));
             bw.write("\n");
         }
         bw.close();
+    }
+
+    public void insertWord(String word, String meaning) {
+
+        TrieNode current = root;
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            TrieNode node = current.children.get(ch);
+            if (node == null) {
+                node = new TrieNode();
+                current.children.put(ch, node);
+            }
+            current = node;
+        }
+        current.endOfWord = true;
+        current.meaning = meaning;
+    }
+
+    public String FindMeaning(String s) {
+        TrieNode current = root;
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            current = current.children.get(ch);
+        }
+        return current.meaning;
+    }
+
+    public void DeleteWord(String key) {
+        DeleteHelper(root, key, 0);
+    }
+
+    public TrieNode DeleteHelper(TrieNode node, String key, int i) {
+        if(node == null) return null;
+        if(i == key.length()) {
+            node.endOfWord = false;
+            if(node.children != null) {
+                node = null;
+            }
+            return node;
+        }
+        TrieNode temp = node.children.get(key.charAt(i));
+        temp = DeleteHelper(temp, key, i+1);
+        if(node.children == null && !node.endOfWord) {
+            node = null;
+        }
+        return node;
+    }
+
+    public ObservableList<String> advanceSearch(String prefix){
+        ObservableList<String> autoCompWords = FXCollections.observableArrayList();
+
+        TrieNode currentNode=root;
+        if (prefix == null) prefix = "";
+        for(int i=0;i<prefix.length();i++) {
+            currentNode=currentNode.children.get(prefix.charAt(i));
+            if(currentNode==null) return autoCompWords;
+        }
+
+        searchWords(currentNode,autoCompWords,prefix);
+        return autoCompWords;
+    }
+
+    private void searchWords(TrieNode currentNode, List<String> autoCompWords, String word) {
+        if(currentNode==null) return;
+
+        if(currentNode.endOfWord) {
+            autoCompWords.add(word);
+        }
+        Map<Character,TrieNode> map=currentNode.children;
+        for(Character c:map.keySet()) {
+            searchWords(map.get(c),autoCompWords, word+String.valueOf(c));
+        }
+
     }
 }
