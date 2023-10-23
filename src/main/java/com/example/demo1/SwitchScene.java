@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public abstract class SwitchScene {
+public class SwitchScene {
 
 
     public void Switch(String path, AnchorPane root) throws Exception {

@@ -1,10 +1,6 @@
 package com.example.demo1;
 
 import com.jfoenix.controls.*;
-import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
-import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
-import com.sun.speech.freetts.Voice;
-import com.sun.speech.freetts.VoiceManager;
 import com.voicerss.tts.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -13,25 +9,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -40,15 +25,14 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.TreeMap;
 
-public class UI_Dic extends SwitchScene implements Initializable {
+public class UI_Dic extends Alerts implements Initializable {
 
 
     @FXML
     private JFXTextField search;
     @FXML
-    private JFXListView<String> recommend;
+    private ListView<String> recommend;
     @FXML
     private TextArea result;
     @FXML
@@ -79,20 +63,17 @@ public class UI_Dic extends SwitchScene implements Initializable {
                 }
             }
         });
-        recommend.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                String select = recommend.getSelectionModel().getSelectedItem();
-                String ans = MainUI.testing.FindMeaning(select);
-                result.setText(ans);
-                TheWord.setText(select);
-                if(select != null) {
-                    AddToSQL(select, ans);
-                }
+        recommend.getSelectionModel().selectedItemProperty().addListener(this::selectionChanged);
 
-            }
-        });
+    }
 
+    private void selectionChanged(ObservableValue<? extends String> Observable, String oldVal, String newVal){
+        String select = recommend.getSelectionModel().getSelectedItem();
+        if(select == null) return;
+        String ans = MainUI.testing.FindMeaning(select);
+        result.setText(ans);
+        TheWord.setText(select);
+        AddToSQL(select, ans);
     }
 
     public void confirm(ActionEvent event) throws Exception {
@@ -132,10 +113,7 @@ public class UI_Dic extends SwitchScene implements Initializable {
     public void delete(ActionEvent event) throws Exception {
         if (Objects.equals(TheWord.getText(), "")) return;
         String conf = "Do you really want to delete the word: " + TheWord.getText();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("really?");
-        alert.setContentText("U sure?");
-        alert.setHeaderText(conf);
+        Alert alert = makeAlert("really?", conf, "U sure?", "confirm");
         Optional<ButtonType> alertResult = alert.showAndWait();
         if(alertResult.get() != ButtonType.OK) {
             return;
@@ -149,7 +127,8 @@ public class UI_Dic extends SwitchScene implements Initializable {
         MainUI.testing.DeleteWord(del);
         MainUI.testing.SaveFile();
 
-        Switch("dict.fxml", MainUI.glob);
+        SwitchScene s = new SwitchScene();
+        s.Switch("dict.fxml", MainUI.glob);
     }
 
     public void AddToSQL (String word, String meaning) {

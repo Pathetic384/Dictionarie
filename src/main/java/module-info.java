@@ -7,6 +7,7 @@ module com.example.demo1 {
     requires com.jfoenix;
     requires java.desktop;
     requires voicerss.tts;
+    requires sqlite.jdbc;
 
 
     opens com.example.demo1 to javafx.fxml;

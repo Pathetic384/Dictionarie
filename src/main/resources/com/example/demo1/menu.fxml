@@ -10,7 +10,7 @@
    <children>
       <ImageView fitHeight="93.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../olli-the-polite-cat.png" />
+            <Image url="@../../../picss/olli-the-polite-cat.png" />
          </image>
       </ImageView>
       <JFXButton accessibleText="dict" prefHeight="74.0" prefWidth="186.0" text="Dictionary" textFill="#fb00ff">

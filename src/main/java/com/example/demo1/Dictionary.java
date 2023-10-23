@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.*;
 
 public class Dictionary {
-    private TrieNode root = new TrieNode();
+    private final TrieNode root = new TrieNode();
 
     public void LoadFile(String path) throws Exception{
         BufferedReader br = new BufferedReader(new FileReader(path));
@@ -34,7 +34,7 @@ public class Dictionary {
 
     public void SaveFile() throws Exception {
         BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/dictest.txt"));
-        List<String> allWord = new ArrayList<>();
+        List<String> allWord;
         allWord = advanceSearch("");
         for (String i : allWord) {
             bw.write("|");
@@ -68,7 +68,21 @@ public class Dictionary {
             char ch = s.charAt(i);
             current = current.children.get(ch);
         }
+        if(current == null) return "";
         return current.meaning;
+    }
+
+    public boolean Exist(String s) {
+        TrieNode current = root;
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            TrieNode node = current.children.get(ch);
+            if (node == null) {
+                return false;
+            }
+            current = node;
+        }
+        return true;
     }
 
     public void DeleteWord(String key) {

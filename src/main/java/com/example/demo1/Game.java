@@ -12,7 +12,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.*;
 
-public class Game extends SwitchScene implements Initializable {
+public class Game implements Initializable {
 
     @FXML
     private Pane e1;
@@ -129,7 +129,8 @@ public class Game extends SwitchScene implements Initializable {
 
 
     public void Replay(ActionEvent event) throws Exception {
-        Switch("game.fxml", MainUI.glob);
+        SwitchScene s = new SwitchScene();
+        s.Switch("game.fxml", MainUI.glob);
     }
 
 }

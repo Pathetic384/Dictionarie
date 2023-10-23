@@ -13,11 +13,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class History extends SwitchScene implements Initializable {
+public class History extends Alerts implements Initializable {
 
     @FXML
     private ListView<String> searched;
@@ -82,11 +81,9 @@ public class History extends SwitchScene implements Initializable {
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
 
                 String select = searched.getSelectionModel().getSelectedItem();
-                System.out.println(select);
                 String[] text = select.split("\\|", 3);
                 String text2 = text[1];
                 text2 = text2.trim();
-                System.out.println(text2);
                 String ans = MainUI.testing.FindMeaning(text2);
                 meaning.setText(ans);
                 word.setText(text2);
@@ -130,15 +127,13 @@ public class History extends SwitchScene implements Initializable {
                 }
             }
         }
-
-        Switch("history.fxml", MainUI.glob);
+        SwitchScene s = new SwitchScene();
+        s.Switch("history.fxml", MainUI.glob);
     }
 
     public void ClearHistory(ActionEvent event) throws Exception {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("really?");
-        alert.setContentText("U sure?");
-        alert.setHeaderText("Do you really want to clear the searching history?");
+        Alert alert = makeAlert("really?", "U sure?"
+                , "Do u really want to clear the searching history?", "confirm");
         Optional<ButtonType> alertResult = alert.showAndWait();
         if(alertResult.get() != ButtonType.OK) {
             return;
@@ -177,8 +172,8 @@ public class History extends SwitchScene implements Initializable {
                 }
             }
         }
-
-        Switch("history.fxml", MainUI.glob);
+        SwitchScene s = new SwitchScene();
+        s.Switch("history.fxml", MainUI.glob);
     }
 
 }

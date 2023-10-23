@@ -36,3 +36,18 @@
 {
     -fx-background-color: linear-gradient(to left, #4ab4de, #ff80ed);
 }
+.switch_button
+{
+    -fx-background-color: transparent;
+    -fx-background-radius: 10 10 10 10;
+}
+.switch_button:hover
+{
+    -fx-background-color: #465160;
+    -fx-background-radius: 10 10 10 10;
+}
+.switch_button:pressed
+{
+    -fx-background-color: #3E444C;
+    -fx-background-radius: 10 10 10 10;
+}
