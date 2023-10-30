@@ -1,5 +1,6 @@
 package com.example.demo1;
 
+import com.jfoenix.controls.JFXTextField;
 import edu.smu.tspell.wordnet.Synset;
 import edu.smu.tspell.wordnet.WordNetDatabase;
 import javafx.event.ActionEvent;
@@ -18,12 +19,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Synonyms{
+
     @FXML
-    Label label1;
-    @FXML
-    Label label2;
-    @FXML
-    TextArea text1;
+    JFXTextField text1;
     @FXML
     TextArea text2;
 

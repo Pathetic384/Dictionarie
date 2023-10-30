@@ -39,8 +39,6 @@ public class UI_Dic extends Alerts implements Initializable {
     private Label TheWord;
 
 
-    Connection connection = null;
-    PreparedStatement psInsert = null;
 
     ObservableList<String> list = FXCollections.observableArrayList();
 
@@ -73,7 +71,7 @@ public class UI_Dic extends Alerts implements Initializable {
         String ans = MainUI.testing.FindMeaning(select);
         result.setText(ans);
         TheWord.setText(select);
-        AddToSQL(select, ans);
+        History.AddToSQL(select, ans);
     }
 
     public void confirm(ActionEvent event) throws Exception {
@@ -83,7 +81,7 @@ public class UI_Dic extends Alerts implements Initializable {
             String ans = MainUI.testing.FindMeaning(text);
             result.setText(ans);
             TheWord.setText(text);
-            AddToSQL(text, ans);
+            History.AddToSQL(text, ans);
         }
     }
 
@@ -113,7 +111,7 @@ public class UI_Dic extends Alerts implements Initializable {
     public void delete(ActionEvent event) throws Exception {
         if (Objects.equals(TheWord.getText(), "")) return;
         String conf = "Do you really want to delete the word: " + TheWord.getText();
-        Alert alert = makeAlert("really?", conf, "U sure?", "confirm");
+        Alert alert = makeAlert( conf, "  U sure?", "confirm");
         Optional<ButtonType> alertResult = alert.showAndWait();
         if(alertResult.get() != ButtonType.OK) {
             return;
@@ -131,37 +129,5 @@ public class UI_Dic extends Alerts implements Initializable {
         s.Switch("dict.fxml", MainUI.glob);
     }
 
-    public void AddToSQL (String word, String meaning) {
-        try {
-            Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:src/main/resources/sqlite.db");
-            psInsert = connection.prepareStatement("INSERT INTO history VALUES (?, ?, ?)");
-            LocalDate now = LocalDate.now();
-            psInsert.setString(1, now.toString());
-            psInsert.setString(2, word);
-            psInsert.setString(3,meaning);
-            psInsert.executeUpdate();
-        }
-        catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        finally{
-            if( psInsert!=null ) {
-                try {
-                    psInsert.close();
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            if( connection!=null ) {
-                try {
-                    connection.close();
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+
 }

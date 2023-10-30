@@ -1,5 +1,6 @@
 package com.example.demo1;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -13,19 +14,19 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.util.*;
 
 public class History extends Alerts implements Initializable {
 
     @FXML
     private ListView<String> searched;
     @FXML
-    private Label word;
+    private JFXTextField word;
     @FXML
     private TextArea meaning;
 
-    ObservableList<String> list = FXCollections.observableArrayList();
+    List<String> list = new ArrayList<>();
 
     Connection connection = null;
     PreparedStatement prepare = null;
@@ -47,33 +48,16 @@ public class History extends Alerts implements Initializable {
             while (resultset.next()) {
                 String time = resultset.getString(1);
                 String word = resultset.getString(2);
-                String meaning = resultset.getString(3);
                 String adding = time + "|    " + word;
                 list.add(adding);
             }
         }
-        catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        catch (Exception e) {}
         finally{
-            if( resultset!=null ) {
-                try {
-                    resultset.close();
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            if( connection!=null ) {
-                try {
-                    connection.close();
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+            if( resultset!=null ) {try {resultset.close();} catch (Exception e) {}}
+            if( connection!=null ) {try {connection.close();} catch (Exception e) {}}}
 
+        Collections.reverse(list);
         searched.getItems().addAll(list);
 
         searched.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -81,10 +65,28 @@ public class History extends Alerts implements Initializable {
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
 
                 String select = searched.getSelectionModel().getSelectedItem();
+
                 String[] text = select.split("\\|", 3);
-                String text2 = text[1];
-                text2 = text2.trim();
-                String ans = MainUI.testing.FindMeaning(text2);
+                String text1 = text[0].trim();
+                String text2 = text[1].trim();
+                String ans = "";
+                try {
+                    Class.forName("org.sqlite.JDBC");
+                    connection = DriverManager.getConnection(linky);
+                    String prep = "SELECT meaning FROM history WHERE time = '"
+                            + text1 + "' AND word = '" + text2 + "';" ;
+                    prepare = connection.prepareStatement(prep);
+                    resultset = prepare.executeQuery();
+
+
+                    ans = resultset.getString(1);
+
+                }
+                catch (Exception e) {}
+                finally{
+                    if( resultset!=null ) {try {resultset.close();} catch (Exception e) {}}
+                    if( connection!=null ) {try {connection.close();} catch (Exception e) {}}}
+
                 meaning.setText(ans);
                 word.setText(text2);
 
@@ -92,11 +94,28 @@ public class History extends Alerts implements Initializable {
         });
 
     }
-
+    public static void AddToSQL (String word, String meaning) {
+        Connection connect = null;
+        PreparedStatement psInsert = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            connect = DriverManager.getConnection("jdbc:sqlite:src/main/resources/sqlite.db");
+            psInsert = connect.prepareStatement("INSERT INTO history VALUES (?, ?, ?)");
+            LocalDate now = LocalDate.now();
+            psInsert.setString(1, now.toString());
+            psInsert.setString(2, word);
+            psInsert.setString(3,meaning);
+            psInsert.executeUpdate();
+        }
+        catch (Exception e) {}
+        finally{
+            if( psInsert!=null ) {try {psInsert.close();} catch (Exception e) {}}
+            if( connect!=null ) {try {connect.close();} catch (Exception e) {}}}
+    }
 
     public void DeleteHistory(ActionEvent event) throws Exception {
 
-        String text = word.getText();
+        String text = word.getText().trim();
 
         try {
             Class.forName("org.sqlite.JDBC");
@@ -106,34 +125,17 @@ public class History extends Alerts implements Initializable {
             prepare.executeUpdate();
 
         }
-        catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        catch (Exception e) {}
         finally{
-            if( resultset!=null ) {
-                try {
-                    resultset.close();
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            if( connection!=null ) {
-                try {
-                    connection.close();
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+            if( prepare!=null ) {try {prepare.close();} catch (Exception e) {}}
+            if( connection!=null ) {try {connection.close();} catch (Exception e) {}}}
         SwitchScene s = new SwitchScene();
         s.Switch("history.fxml", MainUI.glob);
     }
 
     public void ClearHistory(ActionEvent event) throws Exception {
-        Alert alert = makeAlert("really?", "U sure?"
-                , "Do u really want to clear the searching history?", "confirm");
+        Alert alert = makeAlert( "U sure?"
+                , "  Do u really want to clear the searching history?", "confirm");
         Optional<ButtonType> alertResult = alert.showAndWait();
         if(alertResult.get() != ButtonType.OK) {
             return;
@@ -143,7 +145,6 @@ public class History extends Alerts implements Initializable {
 
     public void Cleared() throws Exception {
 
-        String text = word.getText();
 
         try {
             Class.forName("org.sqlite.JDBC");
@@ -151,27 +152,10 @@ public class History extends Alerts implements Initializable {
             prepare = connection.prepareStatement("DELETE FROM history");
             prepare.executeUpdate();
         }
-        catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        catch (Exception e) {}
         finally{
-            if( resultset!=null ) {
-                try {
-                    resultset.close();
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            if( connection!=null ) {
-                try {
-                    connection.close();
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+            if( prepare!=null ) {try {prepare.close();} catch (Exception e) {}}
+            if( connection!=null ) {try {connection.close();} catch (Exception e) {}}}
         SwitchScene s = new SwitchScene();
         s.Switch("history.fxml", MainUI.glob);
     }

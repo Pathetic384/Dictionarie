@@ -32,7 +32,7 @@ public class AddWord extends Alerts implements Initializable {
 
     public void wordAdd(ActionEvent event) throws Exception {
         if(Objects.equals(adding.getText(), "") || Objects.equals(meaning.getText(), "")) {
-            Alert alert = makeAlert("really?","You must fill out both word and meaning!!!"
+            Alert alert = makeAlert("You must fill out both word and meaning!!!"
                     ,"","error");
             alert.show();
             return;
@@ -40,14 +40,14 @@ public class AddWord extends Alerts implements Initializable {
         String conf;
         String conf2;
         if(MainUI.testing.Exist(adding.getText())) {
-            conf = "Are you sure about adding the word: " + adding.getText() + " which already exist?";
+            conf = "   Are you sure about adding the word: " + adding.getText() + " which already exist?";
             conf2 = "Definition: " + MainUI.testing.FindMeaning(adding.getText());
         }
         else {
             conf = "Do you really want to add the word: " + adding.getText();
             conf2 = "Definition: " + meaning.getText();
         }
-        Alert alert = makeAlert("really?", conf2, conf, "confirm");
+        Alert alert = makeAlert( conf2, conf, "confirm");
 
         Optional<ButtonType> alertResult = alert.showAndWait();
         if(alertResult.get() != ButtonType.OK) {

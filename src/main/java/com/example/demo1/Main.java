@@ -8,6 +8,9 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
+
 public class Main extends Application {
     private double x = 0;
     private double y = 0;
@@ -21,7 +24,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("mainui.fxml"));
         Scene scene = new Scene(root);
 
-        Image icon = new Image("gato.jpg");
+        InputStream stream = new FileInputStream("src/main/resources/picss/gato.jpg");
+        Image icon = new Image(stream);
         stage.getIcons().add(icon);
         stage.setTitle("Dictionarie B)");
 
