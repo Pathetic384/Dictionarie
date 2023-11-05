@@ -1,4 +1,5 @@
 package com.example.demo1;
+import com.example.demo1.WordsManagement.Dictionary;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
