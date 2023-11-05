@@ -3,25 +3,37 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="532.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.AddWord">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.AddWord">
    <children>
-      <JFXTextField fx:id="adding" layoutX="69.0" layoutY="46.0" prefHeight="60.0" prefWidth="501.0" promptText="Enter the word you want to add">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextArea fx:id="meaning" layoutX="63.0" layoutY="145.0" prefHeight="350.0" prefWidth="745.0" promptText="     Enter the meaning of the word" style="-fx-background-color: #bedbed;">
-         <font>
-            <Font name="Bell MT" size="23.0" />
-         </font>
-      </JFXTextArea>
-      <JFXButton buttonType="RAISED" layoutX="640.0" layoutY="41.0" onAction="#wordAdd" prefHeight="69.0" prefWidth="161.0" style="-fx-background-color: #40e0d0;" text="Confirm" textFill="#7b1a96">
-         <font>
-            <Font name="Californian FB" size="22.0" />
-         </font>
-      </JFXButton>
+      <ImageView fitHeight="614.0" fitWidth="882.0" layoutX="-7.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../picss/bk2.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="532.0" prefWidth="871.0">
+         <children>
+            <JFXTextField fx:id="adding" layoutX="69.0" layoutY="46.0" prefHeight="60.0" prefWidth="501.0" promptText="Enter the word you want to add">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextArea fx:id="meaning" layoutX="63.0" layoutY="145.0" prefHeight="350.0" prefWidth="745.0" promptText="     Enter the meaning of the word" style="-fx-background-color: #bedbed;">
+               <font>
+                  <Font name="Bell MT" size="23.0" />
+               </font>
+            </JFXTextArea>
+            <JFXButton buttonType="RAISED" layoutX="640.0" layoutY="41.0" onAction="#wordAdd" prefHeight="69.0" prefWidth="161.0" style="-fx-background-color: #40e0d0;" text="Confirm" textFill="#7b1a96">
+               <font>
+                  <Font name="Californian FB" size="22.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

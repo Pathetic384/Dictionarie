@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import java.io.File;
@@ -28,6 +29,12 @@ public class Game implements Initializable {
     private Pane e6;
     @FXML
     private Pane e7;
+    @FXML
+    private ImageView ded;
+    @FXML
+    private ImageView rip;
+    @FXML
+    private ImageView norip;
     @FXML
     private Text text;
     @FXML
@@ -62,6 +69,7 @@ public class Game implements Initializable {
         e5.setVisible(false);
         e6.setVisible(false);
         e7.setVisible(false);
+        ded.setVisible(false);
         text.setText("");
 
         right = 0;
@@ -104,6 +112,7 @@ public class Game implements Initializable {
             if (right == word.length()) {
                 yay.setText("CONGRATULATION :DDD");
                 butts.setDisable(true);
+                norip.setVisible(true);
             }
         }
         else {
@@ -121,6 +130,8 @@ public class Game implements Initializable {
             else if(wrong ==7) {
                 e7.setVisible(true);
                 butts.setDisable(true);
+                ded.setVisible(true);
+                rip.setVisible(true);
                 yay.setText("u stpid ? ,':/ ");
             }
         }

@@ -36,6 +36,10 @@
 {
     -fx-background-color: linear-gradient(to left, #4ab4de, #ff80ed);
 }
+.recommend
+{
+    -fx-background-color: linear-gradient(to right, #A3D5F9, #D9A3F9);
+}
 .switch_button
 {
     -fx-background-color: transparent;
@@ -49,5 +53,20 @@
 .switch_button:pressed
 {
     -fx-background-color: #3E444C;
+    -fx-background-radius: 10 10 10 10;
+}
+.replay_button
+{
+    -fx-background-color: #A642F4;
+    -fx-background-radius: 10 10 10 10;
+}
+.replay_button:hover
+{
+    -fx-background-color: #CA8CF9 ;
+    -fx-background-radius: 10 10 10 10;
+}
+.replay_button:pressed
+{
+    -fx-background-color: #743AA1 ;
     -fx-background-radius: 10 10 10 10;
 }

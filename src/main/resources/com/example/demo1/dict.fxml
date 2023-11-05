@@ -5,41 +5,52 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.UI_Dic">
    <children>
-      <TextArea fx:id="result" editable="false" focusTraversable="false" layoutX="401.0" layoutY="124.0" prefHeight="382.0" prefWidth="440.0" promptText="  Meaning" wrapText="true">
-         <font>
-            <Font name="Candara Italic" size="20.0" />
-         </font>
-      </TextArea>
-      <Label fx:id="TheWord" layoutX="416.0" layoutY="64.0" prefHeight="38.0" prefWidth="409.0">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-      <JFXTextField fx:id="search" layoutX="39.0" layoutY="36.0" prefHeight="38.0" prefWidth="271.0" promptText="Find your word" unFocusColor="#a511cf">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </JFXTextField>
-      <JFXListView fx:id="recommend" layoutX="46.0" layoutY="96.0" prefHeight="420.0" prefWidth="257.0" />
-      <JFXButton fx:id="enter" buttonType="RAISED" layoutX="319.0" layoutY="36.0" onAction="#confirm" prefHeight="38.0" prefWidth="69.0" style="-fx-background-color: #a72090;" text="Search" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="723.0" layoutY="20.0" onAction="#read" style="-fx-background-color: #03f0d4;" stylesheets="@../../../style.css" text="Read">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="793.0" layoutY="20.0" onAction="#delete" style="-fx-background-color: #03f0d4;" stylesheets="@../../../style.css" text="Delete">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXButton>
+      <ImageView fitHeight="537.0" fitWidth="880.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../picss/bk.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="551.0" prefWidth="893.0">
+         <children>
+            <TextArea fx:id="result" editable="false" focusTraversable="false" layoutX="401.0" layoutY="124.0" prefHeight="382.0" prefWidth="440.0" promptText="  Meaning" wrapText="true">
+               <font>
+                  <Font name="Candara Italic" size="20.0" />
+               </font>
+            </TextArea>
+            <Label fx:id="TheWord" layoutX="416.0" layoutY="64.0" prefHeight="38.0" prefWidth="409.0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="search" layoutX="39.0" layoutY="36.0" prefHeight="38.0" prefWidth="271.0" promptText="Find your word" unFocusColor="#a511cf">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </JFXTextField>
+            <JFXListView fx:id="recommend" layoutX="46.0" layoutY="96.0" prefHeight="420.0" prefWidth="257.0" />
+            <JFXButton fx:id="enter" buttonType="RAISED" layoutX="319.0" layoutY="36.0" onAction="#confirm" prefHeight="38.0" prefWidth="69.0" style="-fx-background-color: #a72090;" text="Search" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="723.0" layoutY="20.0" onAction="#read" style="-fx-background-color: #03f0d4;" stylesheets="@../../../style.css" text="Read">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="793.0" layoutY="20.0" onAction="#delete" style="-fx-background-color: #03f0d4;" stylesheets="@../../../style.css" text="Delete">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
