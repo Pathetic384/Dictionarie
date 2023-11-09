@@ -13,8 +13,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class MainUI extends SwitchScene implements Initializable {
 
@@ -29,14 +33,19 @@ public class MainUI extends SwitchScene implements Initializable {
     public final static Dictionary testing = new Dictionary();
     private final String path = "src/main/resources/dictest.txt";
 
+    public static ArrayList<String> words = new ArrayList<String>();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Scanner sc = null;
         glob = root;
         VBox box = null;
         try {Switch("dict.fxml", root);
             testing.LoadFile(path);
+            sc = new Scanner(new File("src/main/resources/gamewords.txt"));
             box = FXMLLoader.load(getClass().getResource("menu.fxml"));
         } catch (Exception e) {}
+        while(sc.hasNextLine()) words.add(sc.nextLine());
 
         HamburgerSlideCloseTransition closing = new HamburgerSlideCloseTransition(hamburger);
         closing.setRate(-1);

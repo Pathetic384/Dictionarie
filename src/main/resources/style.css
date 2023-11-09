@@ -70,3 +70,78 @@
     -fx-background-color: #743AA1 ;
     -fx-background-radius: 10 10 10 10;
 }
+.butt1
+{
+    -fx-background-color: #FED9D9;
+    -fx-background-radius: 0
+}
+.butt1:hover
+{
+    -fx-background-color: #CA8CF9 ;
+    -fx-background-radius: 0
+}
+.butt1:pressed
+{
+    -fx-background-color: #743AA1 ;
+    -fx-background-radius: 0
+}
+.butt2
+{
+    -fx-background-color: #FED9D9;
+    -fx-background-radius: 0
+}
+.butt2:hover
+{
+    -fx-background-color: #FBFF97;
+    -fx-background-radius: 0
+}
+.butt2:pressed
+{
+    -fx-background-color: #BDCA56 ;
+    -fx-background-radius: 0
+}
+.butt3
+{
+    -fx-background-color: #FED9D9;
+    -fx-background-radius: 0
+}
+.butt3:hover
+{
+    -fx-background-color: #ABFF97 ;
+    -fx-background-radius: 0
+}
+.butt3:pressed
+{
+    -fx-background-color: #699B51 ;
+    -fx-background-radius: 0
+}
+.butt4
+{
+    -fx-background-color: #FED9D9;
+    -fx-background-radius: 0
+}
+.butt4:hover
+{
+    -fx-background-color: #ABFBEE;
+    -fx-background-radius: 0
+}
+.butt4:pressed
+{
+    -fx-background-color: #57AA9D ;
+    -fx-background-radius: 0
+}
+.butt5
+{
+    -fx-background-color: #FED9D9;
+    -fx-background-radius: 0
+}
+.butt5:hover
+{
+    -fx-background-color: #F19292;
+    -fx-background-radius: 0
+}
+.butt5:pressed
+{
+    -fx-background-color: #BE3A3A;
+    -fx-background-radius: 0
+}
