@@ -52,17 +52,9 @@ public class Game implements Initializable {
     private String word;
     private String setText;
 
-    private ArrayList<String> words = new ArrayList<String>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Scanner sc = null;
-        try {
-            sc = new Scanner(new File("src/main/resources/gamewords.txt"));
-        } catch (Exception e) {
-
-        }
-        while(sc.hasNextLine()) words.add(sc.nextLine());
 
         e1.setVisible(false);
         e2.setVisible(false);
@@ -93,8 +85,8 @@ public class Game implements Initializable {
 
     public String getRandomWord(){
         Random random = new Random();
-        int i = random.nextInt(words.size());
-        String word = words.get(i);
+        int i = random.nextInt(MainUI.words.size());
+        String word = MainUI.words.get(i);
         return word;
     }
 
