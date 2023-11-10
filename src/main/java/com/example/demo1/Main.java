@@ -5,15 +5,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 public class Main extends Application {
     private double x = 0;
     private double y = 0;
+    public static final ArrayList<String> winningWords = new ArrayList<>();
+    public static final ArrayList<String> dictionaryWords = new ArrayList<>();
+
+    private static Stage stageReference;
+
     public static void main(String[] args) throws Exception{
         launch();
     }
@@ -41,5 +49,4 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
 }
