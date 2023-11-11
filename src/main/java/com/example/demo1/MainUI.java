@@ -76,7 +76,7 @@ public class MainUI extends SwitchScene implements Initializable {
                             catch (Exception ex) {}
                             break;
                         case "game":
-                            try {Switch("game.fxml", root);}
+                            try {Switch("selectgame.fxml", root);}
                             catch (Exception ex) {}
                             break;
                         case "history":

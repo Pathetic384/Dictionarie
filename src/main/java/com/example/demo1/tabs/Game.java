@@ -44,8 +44,7 @@ public class Game implements Initializable {
     private TextArea meaning;
     @FXML
     private Pane butts;
-    @FXML
-    private Label yay;
+
     @FXML
     private JFXCheckBox hint;
 
@@ -86,7 +85,7 @@ public class Game implements Initializable {
 
     }
 
-    public String getRandomWord(){
+    public static String getRandomWord(){
         Random random = new Random();
         int i = random.nextInt(MainUI.words.size());
         String word = MainUI.words.get(i);
@@ -107,7 +106,6 @@ public class Game implements Initializable {
                 right++;
             }
             if (right == word.length()) {
-                yay.setText("CONGRATULATION :DDD");
                 butts.setDisable(true);
                 norip.setVisible(true);
             }
@@ -129,7 +127,6 @@ public class Game implements Initializable {
                 butts.setDisable(true);
                 ded.setVisible(true);
                 rip.setVisible(true);
-                yay.setText("u stpid ? ,':/ ");
             }
         }
     }
@@ -149,4 +146,8 @@ public class Game implements Initializable {
         s.Switch("game.fxml", MainUI.glob);
     }
 
+    public void Back(ActionEvent event) throws Exception {
+        SwitchScene s = new SwitchScene();
+        s.Switch("selectgame.fxml", MainUI.glob);
+    }
 }

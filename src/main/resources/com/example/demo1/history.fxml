@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.tabs.History">
    <children>
       <ImageView fitHeight="541.0" fitWidth="951.0" pickOnBounds="true" preserveRatio="true">
@@ -30,15 +29,29 @@
                   <Font name="System Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXButton buttonType="RAISED" layoutX="617.0" layoutY="91.0" onAction="#DeleteHistory" prefHeight="45.0" prefWidth="80.0" styleClass="exit_button" stylesheets="@../../../style.css" text="Delete">
+            <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="617.0" layoutY="91.0" onAction="#DeleteHistory" prefHeight="45.0" prefWidth="115.0" styleClass="exit_button" stylesheets="@../../../style.css" text="Delete">
                <font>
                   <Font size="16.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../picss/1345874.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="617.0" layoutY="154.0" onAction="#ClearHistory" prefHeight="45.0" prefWidth="80.0" styleClass="exit_button" stylesheets="@../../../style.css" text="Clear" textFill="#cc2222">
+            <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="617.0" layoutY="154.0" onAction="#ClearHistory" prefHeight="45.0" prefWidth="115.0" styleClass="exit_button" stylesheets="@../../../style.css" text="Clear" textFill="#cc2222">
                <font>
                   <Font name="System Italic" size="15.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../picss/clear-icon-3.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </JFXButton>
          </children>
       </AnchorPane>

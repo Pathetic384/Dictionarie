@@ -145,3 +145,33 @@
     -fx-background-color: #BE3A3A;
     -fx-background-radius: 0
 }
+.read
+{
+    -fx-background-color: #8CE8EC;
+    -fx-background-radius: 10 10 10 10;
+}
+.read:hover
+{
+    -fx-background-color: #D4F8FB;
+    -fx-background-radius: 10 10 10 10;
+}
+.read:pressed
+{
+    -fx-background-color: #31A3A7;
+    -fx-background-radius: 10 10 10 10;
+}
+.delete
+{
+    -fx-background-color: #8CE8EC;
+    -fx-background-radius: 10 10 10 10;
+}
+.delete:hover
+{
+    -fx-background-color: #EF5A5A;
+    -fx-background-radius: 10 10 10 10;
+}
+.delete:pressed
+{
+    -fx-background-color: #A23D3D;
+    -fx-background-radius: 10 10 10 10;
+}
