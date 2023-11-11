@@ -6,14 +6,16 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.tabs.AddWord">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.tabs.AddWord">
    <children>
       <ImageView fitHeight="614.0" fitWidth="882.0" layoutX="-7.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../picss/bk2.png" />
+            <Image url="@../../../../../../../../../Downloads/stars-stars-texture-black-wallpaper-preview.jpg" />
          </image>
       </ImageView>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="532.0" prefWidth="871.0">
@@ -23,15 +25,38 @@
                   <Font size="25.0" />
                </font>
             </JFXTextField>
-            <JFXTextArea fx:id="meaning" layoutX="63.0" layoutY="145.0" prefHeight="350.0" prefWidth="745.0" promptText="     Enter the meaning of the word" style="-fx-background-color: #bedbed;">
+            <JFXTextArea fx:id="meaning" focusColor="#69507985" layoutX="63.0" layoutY="145.0" prefHeight="350.0" prefWidth="745.0" promptText="     Enter the meaning of the word" style="-fx-background-color: #bedbed;">
                <font>
                   <Font name="Bell MT" size="23.0" />
                </font>
+               <unFocusColor>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.43545931577682495" green="0.26717835664749146" blue="0.6710526347160339" opacity="0.3499999940395355" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </unFocusColor>
             </JFXTextArea>
-            <JFXButton buttonType="RAISED" layoutX="640.0" layoutY="41.0" onAction="#wordAdd" prefHeight="69.0" prefWidth="161.0" style="-fx-background-color: #40e0d0;" text="Confirm" textFill="#7b1a96">
+            <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="640.0" layoutY="41.0" onAction="#wordAdd" prefHeight="69.0" prefWidth="161.0" style="-fx-background-color: #40e0d0;" text="Confirm" textFill="#7b1a96">
                <font>
                   <Font name="Californian FB" size="22.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../picss/confirm-icon-512x512-z1hmhk5b.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </JFXButton>
          </children>
       </AnchorPane>
