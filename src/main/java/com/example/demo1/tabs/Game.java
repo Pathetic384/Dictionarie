@@ -2,6 +2,7 @@ package com.example.demo1.tabs;
 
 import com.example.demo1.MainUI;
 import com.example.demo1.SwitchScene;
+import com.jfoenix.controls.JFXCheckBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -45,7 +46,8 @@ public class Game implements Initializable {
     private Pane butts;
     @FXML
     private Label yay;
-
+    @FXML
+    private JFXCheckBox hint;
 
     private int right;
     private int wrong;
@@ -70,12 +72,13 @@ public class Game implements Initializable {
         wrong = 0;
 
         word = getRandomWord();
+        hint.setVisible(false);
 
         System.out.println(word);
         word = word.toUpperCase();
         setText = "";
 
-        for(int i=0;i< word.length()*2;i++) {
+       for(int i=0;i< word.length()*2;i++) {
             if(i%2==0) setText += "_";
             else setText += " ";
         }
@@ -114,13 +117,13 @@ public class Game implements Initializable {
             if(wrong == 1) e1.setVisible(true);
             else if(wrong ==2) e2.setVisible(true);
             else if(wrong ==3) e3.setVisible(true);
-            else if(wrong ==4)
-            {
-                e4.setVisible(true);
-                meaning.setText(MainUI.testing.FindMeaning(word.toLowerCase()));
-            }
+            else if(wrong ==4) e4.setVisible(true);
             else if(wrong ==5) e5.setVisible(true);
-            else if(wrong ==6) e6.setVisible(true);
+            else if(wrong ==6) {
+                e6.setVisible(true);
+                hint.setVisible(true);
+                meaning.setText("Need a hint?");
+            }
             else if(wrong ==7) {
                 e7.setVisible(true);
                 butts.setDisable(true);
@@ -131,7 +134,15 @@ public class Game implements Initializable {
         }
     }
 
+    public void showHint(ActionEvent event) {
 
+        if(hint.isSelected()) {
+            meaning.setText(MainUI.testing.FindMeaning(word.toLowerCase()));
+        }
+        else {
+            meaning.setText("Need a hint?");
+        }
+    }
 
     public void Replay(ActionEvent event) throws Exception {
         SwitchScene s = new SwitchScene();

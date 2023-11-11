@@ -100,7 +100,6 @@ public class MainUI extends SwitchScene implements Initializable {
                     drawer.setDisable(true);
                     closing.setRate(closing.getRate()*-1);
                     closing.play();
-                   // showDialog();
                 });
             }
         }
