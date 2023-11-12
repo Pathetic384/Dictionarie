@@ -175,3 +175,63 @@
     -fx-background-color: #A23D3D;
     -fx-background-radius: 10 10 10 10;
 }
+.search_butt
+{
+    -fx-background-color: #AF5AFA;
+    -fx-background-radius: 10 10 10 10;
+}
+.search_butt:hover
+{
+    -fx-background-color: #D2B0F0;
+    -fx-background-radius: 10 10 10 10;
+}
+.search_butt:pressed
+{
+    -fx-background-color: #724698;
+    -fx-background-radius: 10 10 10 10;
+}
+.game_butt1
+{
+    -fx-background-color: transparent;
+    -fx-background-radius: 10 10 10 10;
+}
+.game_butt1:hover
+{
+    -fx-background-color: #EAC89C;
+    -fx-background-radius: 10 10 10 10;
+}
+.game_butt1:pressed
+{
+    -fx-background-color: #9A723F;
+    -fx-background-radius: 10 10 10 10;
+}
+.game_butt2
+{
+    -fx-background-color: transparent;
+    -fx-background-radius: 10 10 10 10;
+}
+.game_butt2:hover
+{
+    -fx-background-color: #A3F3A4;
+    -fx-background-radius: 10 10 10 10;
+}
+.game_butt2:pressed
+{
+    -fx-background-color: #468247;
+    -fx-background-radius: 10 10 10 10;
+}
+.game_butt3
+{
+    -fx-background-color: transparent;
+    -fx-background-radius: 10 10 10 10;
+}
+.game_butt3:hover
+{
+    -fx-background-color: #A1DCFB;
+    -fx-background-radius: 10 10 10 10;
+}
+.game_butt3:pressed
+{
+    -fx-background-color: #266383;
+    -fx-background-radius: 10 10 10 10;
+}

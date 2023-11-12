@@ -1,5 +1,6 @@
 package com.example.demo1.tabs;
 
+import com.example.demo1.helpers.UIDicHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,6 +38,7 @@ public class GTranslate implements Initializable {
     Image vietIm;
 
     private GtransHelper helper;
+    private UIDicHelper speak_helper;
 
     String language1 = "en";
     String language2 = "vi";
@@ -78,15 +80,32 @@ public class GTranslate implements Initializable {
         helper.valueProperty().addListener((observable, oldValue, newValue) -> text2.setText(String.valueOf(newValue)));
         helper.valueProperty().addListener((observable, oldValue, newValue) ->  History.AddToSQL(text,String.valueOf(newValue)));
 
-
-
         Thread th = new Thread(helper);
         th.setDaemon(true);
         th.start();
-
-
-
     }
 
+    public void Speak1(ActionEvent event) throws Exception {
+        if(Objects.equals(text1.getText(), "")) return;
+        String text = text1.getText();
+
+        speak_helper = new UIDicHelper(text, language1);
+        speak_helper.valueProperty().addListener((observable, oldValue, newValue) -> newValue.start());
+
+        Thread th = new Thread(speak_helper);
+        th.setDaemon(true);
+        th.start();
+    }
+    public void Speak2(ActionEvent event) throws Exception {
+        if(Objects.equals(text2.getText(), "")) return;
+        String text = text2.getText();
+
+        speak_helper = new UIDicHelper(text, language2);
+        speak_helper.valueProperty().addListener((observable, oldValue, newValue) -> newValue.start());
+
+        Thread th = new Thread(speak_helper);
+        th.setDaemon(true);
+        th.start();
+    }
 
 }

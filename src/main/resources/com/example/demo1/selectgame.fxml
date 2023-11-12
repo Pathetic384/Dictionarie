@@ -1,20 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="532.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.tabs.SelectGame">
    <children>
-      <ImageView fitHeight="541.0" fitWidth="967.0" layoutX="-12.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="541.0" fitWidth="967.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../picss/select.png" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="121.0" layoutY="356.0" onAction="#Game1" prefHeight="45.0" prefWidth="108.0" stylesheets="@../../../style.css" text="Play" />
-      <JFXButton buttonType="RAISED" layoutX="386.0" layoutY="356.0" onAction="#Game2" prefHeight="45.0" prefWidth="108.0" stylesheets="@../../../style.css" text="Play" />
-      <JFXButton buttonType="RAISED" layoutX="642.0" layoutY="356.0" onAction="#Game3" prefHeight="45.0" prefWidth="108.0" stylesheets="@../../../style.css" text="Play" />
+      <Button layoutX="123.0" layoutY="361.0" mnemonicParsing="false" onAction="#Game1" prefHeight="46.0" prefWidth="113.0" styleClass="game_butt1" stylesheets="@../../../style.css">
+         <graphic>
+            <ImageView fitHeight="49.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../picss/play1.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="383.0" layoutY="360.0" mnemonicParsing="false" onAction="#Game2" prefHeight="48.0" prefWidth="103.0" styleClass="game_butt2" stylesheets="@../../../style.css">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../picss/play2.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="648.0" layoutY="361.0" mnemonicParsing="false" onAction="#Game3" prefHeight="46.0" prefWidth="94.0" styleClass="game_butt3" stylesheets="@../../../style.css">
+         <graphic>
+            <ImageView fitHeight="38.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../picss/play3.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

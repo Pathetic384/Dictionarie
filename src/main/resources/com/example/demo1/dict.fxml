@@ -35,7 +35,7 @@
                </font>
             </JFXTextField>
             <JFXListView fx:id="recommend" layoutX="46.0" layoutY="96.0" prefHeight="420.0" prefWidth="257.0" />
-            <JFXButton fx:id="enter" buttonType="RAISED" layoutX="319.0" layoutY="36.0" onAction="#confirm" prefHeight="38.0" prefWidth="69.0" style="-fx-background-color: #a72090;" text="Search" textFill="WHITE">
+            <JFXButton fx:id="enter" buttonType="RAISED" layoutX="319.0" layoutY="36.0" onAction="#confirm" prefHeight="38.0" prefWidth="69.0" styleClass="search_butt" stylesheets="@../../../style.css" text="Search" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>

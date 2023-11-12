@@ -94,15 +94,13 @@ public class UI_Dic extends Alerts implements Initializable {
     public void read(ActionEvent event) throws Exception {
         if (Objects.equals(TheWord.getText(), "")) return;
 
-        helper = new UIDicHelper(TheWord.getText());
+        helper = new UIDicHelper(TheWord.getText(),"en");
 
         helper.valueProperty().addListener((observable, oldValue, newValue) -> newValue.start());
 
         Thread th = new Thread(helper);
         th.setDaemon(true);
         th.start();
-
-
     }
 
 
