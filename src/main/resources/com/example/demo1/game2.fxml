@@ -22,9 +22,9 @@
             <Font size="35.0" />
          </font>
       </JFXTextField>
-      <JFXTextArea fx:id="meaning" editable="false" layoutX="231.0" layoutY="263.0" prefHeight="141.0" prefWidth="421.0" promptText="     Meaning:">
+      <JFXTextArea fx:id="meaning" editable="false" layoutX="231.0" layoutY="263.0" prefHeight="141.0" prefWidth="421.0" promptText="     Meaning:" styleClass="text-area" stylesheets="@../../../style.css" wrapText="true">
          <font>
-            <Font name="System Italic" size="21.0" />
+            <Font name="System Italic" size="24.0" />
          </font>
       </JFXTextArea>
       <JFXTextField fx:id="ans" layoutX="264.0" layoutY="459.0" prefHeight="47.0" prefWidth="353.0" promptText="   Enter your guess">

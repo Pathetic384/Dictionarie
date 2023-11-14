@@ -134,7 +134,17 @@ public class Game implements Initializable {
     public void showHint(ActionEvent event) {
 
         if(hint.isSelected()) {
-            meaning.setText(MainUI.testing.FindMeaning(word.toLowerCase()));
+            String wordie = MainUI.testing.FindMeaning(word.toLowerCase());
+            String word = "";
+            int count = 0;
+            Scanner scanner = new Scanner(wordie);
+            while (scanner.hasNextLine() && count != 3) {
+                String line = scanner.nextLine();
+                word += line + '\n';
+                count++;
+            }
+            scanner.close();
+            meaning.setText(word);
         }
         else {
             meaning.setText("Need a hint?");
