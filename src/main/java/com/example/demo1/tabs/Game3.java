@@ -15,7 +15,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.*;
 
-public class Game implements Initializable {
+public class Game3 implements Initializable {
 
     @FXML
     private Pane e1;
@@ -32,23 +32,12 @@ public class Game implements Initializable {
     @FXML
     private Pane e7;
     @FXML
-    private ImageView ded;
-    @FXML
-    private ImageView rip;
-    @FXML
-    private ImageView norip;
-    @FXML
     private Text text;
-    @FXML
-    private TextArea meaning;
     @FXML
     private Pane butts;
     @FXML
     private Label yay;
-
-
     private int right;
-    private int wrong;
     private String word;
     private String setText;
 
@@ -60,28 +49,41 @@ public class Game implements Initializable {
         e2.setVisible(false);
         e3.setVisible(false);
         e4.setVisible(false);
-        e5.setVisible(false);
-        e6.setVisible(false);
         e7.setVisible(false);
-        ded.setVisible(false);
         text.setText("");
 
+
         right = 0;
-        wrong = 0;
+
 
         word = getRandomWord();
+
 
         System.out.println(word);
         word = word.toUpperCase();
         setText = "";
 
+
+        Random rand = new Random();
+        int k = rand.nextInt(word.length() - 1);
+
+
         for(int i=0;i< word.length()*2;i++) {
-            if(i%2==0) setText += "_";
-            else setText += " ";
+            if(i % 2 == 0){
+
+
+                if(k == i / 2 - 1) {
+                    setText += "_";
+                    setText += " ";
+                } else {
+                    setText += word.charAt(i/2);
+                    setText += " ";
+                }
+            }
         }
         text.setText(setText);
-
     }
+
 
     public String getRandomWord(){
         Random random = new Random();
@@ -91,51 +93,43 @@ public class Game implements Initializable {
     }
 
     public void clicked(ActionEvent event) throws Exception {
+        int k = 0;
+        for(int i = 0; i < word.length() * 2; i++) {
+            if(setText.charAt(i) == '_') {
+                k = i / 2;
+            }
+        }
 
         ((Button) event.getSource()).setDisable(true);
         String letter = ((Button)event.getSource()).getText();
-        if(word.contains(letter)) {
+        if(word.indexOf(letter) == k ) {
             int i = word.indexOf(letter);
-            while (i != -1) {
+            if (i != -1) {
                 String tmp = setText.substring(0, i * 2) + letter + setText.substring(i * 2 + 1);
                 setText = tmp;
                 text.setText(setText);
                 i = word.indexOf(letter, i+1);
                 right++;
             }
-            if (right == word.length()) {
-                yay.setText("CONGRATULATION :DDD");
-                butts.setDisable(true);
-                norip.setVisible(true);
+            if (right == 1) {
+                e7.setVisible(true);
+                e4.setVisible(true);
+                e2.setVisible(true);
+                yay.setText("Congratulations ,':/ ");
             }
         }
         else {
-            wrong++;
-            if(wrong == 1) e1.setVisible(true);
-            else if(wrong ==2) e2.setVisible(true);
-            else if(wrong ==3) e3.setVisible(true);
-            else if(wrong ==4)
-            {
-                e4.setVisible(true);
-                meaning.setText(MainUI.testing.FindMeaning(word.toLowerCase()));
-            }
-            else if(wrong ==5) e5.setVisible(true);
-            else if(wrong ==6) e6.setVisible(true);
-            else if(wrong ==7) {
-                e7.setVisible(true);
-                butts.setDisable(true);
-                ded.setVisible(true);
-                rip.setVisible(true);
-                yay.setText("u stpid ? ,':/ ");
-            }
+            e1.setVisible(true);
+            e3.setVisible(true);
+            butts.setDisable(true);
+            yay.setText("u stpid ? ,':/ ");
         }
     }
 
 
-
     public void Replay(ActionEvent event) throws Exception {
         SwitchScene s = new SwitchScene();
-        s.Switch("game.fxml", MainUI.glob);
+        s.Switch("game3.fxml", MainUI.glob);
     }
 
 }

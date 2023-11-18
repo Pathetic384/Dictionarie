@@ -39,9 +39,16 @@ public class Game2 implements Initializable {
     private String word;
     private int error;
 
+    public String getRandomWord(){
+        Random random = new Random();
+        int i = random.nextInt(MainUI.words.size());
+        String word = MainUI.words.get(i);
+        return word;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        word = Game.getRandomWord();
+        word = getRandomWord();
         System.out.println(word);
         error = 3;
 
