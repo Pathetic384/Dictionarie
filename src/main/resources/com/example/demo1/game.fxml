@@ -188,9 +188,9 @@
                   <Font size="27.0" />
                </font>
             </Text>
-            <TextArea fx:id="meaning" editable="false" layoutX="14.0" layoutY="89.0" prefHeight="250.0" prefWidth="406.0">
+            <TextArea fx:id="meaning" editable="false" layoutX="14.0" layoutY="89.0" prefHeight="250.0" prefWidth="406.0" styleClass="text-area" stylesheets="@../../../style.css">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Book Antiqua" size="27.0" />
                </font>
             </TextArea>
             <Label fx:id="yay" alignment="BOTTOM_CENTER" layoutX="29.0" layoutY="17.0" prefHeight="58.0" prefWidth="406.0" textFill="#fd0000">

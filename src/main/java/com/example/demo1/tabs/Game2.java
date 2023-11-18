@@ -80,7 +80,17 @@ public class Game2 implements Initializable {
         if(error == 2) e3.setVisible(false);
         if(error == 1) {
             e2.setVisible(false);
-            meaning.setText(MainUI.testing.FindMeaning(word));
+            String wordle = MainUI.testing.FindMeaning(word.toLowerCase());
+            String word = "";
+            int count = 0;
+            Scanner scanner = new Scanner(wordle);
+            while (scanner.hasNextLine() && count != 3) {
+                String line = scanner.nextLine();
+                word += line + '\n';
+                count++;
+            }
+            scanner.close();
+            meaning.setText(word);
         }
         if(error == 0) {
             e1.setVisible(false);
