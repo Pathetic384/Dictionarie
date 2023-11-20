@@ -18,9 +18,9 @@
                 <Image url="@../../../picss/hello-kitty-1440x900-anime-hello-kitty-hd-art-wallpaper-preview.jpg" />
             </image>
         </ImageView>
-        <ImageView fitHeight="138.0" fitWidth="880.0" layoutY="399.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="242.0" fitWidth="1071.0" layoutX="-83.0" layoutY="313.0" pickOnBounds="true">
             <image>
-                <Image url="@../../../picss/oho-fotor-2023110513242.png" />
+                <Image url="@../../../picss/2wYIhwP-removebg-preview.png" />
             </image>
         </ImageView>
         <ImageView fitHeight="316.0" fitWidth="622.0" layoutX="137.0" layoutY="29.0" pickOnBounds="true">
