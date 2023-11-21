@@ -1,27 +1,20 @@
 package com.example.demo1.tabs;
+
 import com.example.demo1.Alerts;
 import com.example.demo1.MainUI;
 import com.example.demo1.WordsManagement.Dictionary;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 
 import java.net.URL;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.TreeMap;
 
 public class AddWord extends Alerts implements Initializable {
 

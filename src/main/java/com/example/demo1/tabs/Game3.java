@@ -7,13 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import java.io.File;
+
 import java.net.URL;
-import java.util.*;
+import java.util.Random;
+import java.util.ResourceBundle;
 
 public class Game3 implements Initializable {
 

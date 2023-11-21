@@ -5,14 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.stream.Stream;
 
 public class Main extends Application {
     private double x = 0;

@@ -3,9 +3,8 @@ package com.example.demo1.tabs;
 import com.example.demo1.Alerts;
 import com.example.demo1.MainUI;
 import com.example.demo1.SwitchScene;
-import com.jfoenix.controls.*;
-import com.voicerss.tts.*;
-import javafx.beans.value.ChangeListener;
+import com.example.demo1.helpers.UIDicHelper;
+import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,22 +14,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import com.example.demo1.helpers.UIDicHelper;
 
 public class UI_Dic extends Alerts implements Initializable {
 
