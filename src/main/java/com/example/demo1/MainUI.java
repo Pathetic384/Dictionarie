@@ -42,7 +42,7 @@ public class MainUI extends SwitchScene implements Initializable {
         VBox box = null;
         try {Switch("dict.fxml", root);
             testing.LoadFile(path);
-            sc = new Scanner(new File("src/main/resources/gamewords.txt"));
+            sc = new Scanner(new File("src/main/resources/game.txt"));
             box = FXMLLoader.load(getClass().getResource("menu.fxml"));
         } catch (Exception e) {}
         while(sc.hasNextLine()) words.add(sc.nextLine());

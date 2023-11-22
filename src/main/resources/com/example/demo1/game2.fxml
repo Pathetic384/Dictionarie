@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="532.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.tabs.Game2">
+<AnchorPane prefHeight="532.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.tabs.Game2">
    <children>
       <ImageView fitHeight="549.0" fitWidth="982.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -48,7 +48,7 @@
             <Image url="@../../../picss/life.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="enter" buttonType="RAISED" layoutX="643.0" layoutY="466.0" onAction="#Check" prefHeight="33.0" prefWidth="71.0" styleClass="read" stylesheets="@../../../style.css" text="Enter" />
+      <JFXButton fx:id="enter" buttonType="RAISED" layoutX="643.0" layoutY="466.0" onAction="#Check" prefHeight="33.0" prefWidth="71.0" styleClass="read" stylesheets="@../../../style.css" text="Submit" />
       <ImageView fx:id="img1" fitHeight="218.0" fitWidth="151.0" layoutX="696.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="res" alignment="CENTER" contentDisplay="CENTER" layoutX="198.0" layoutY="86.0" prefHeight="49.0" prefWidth="484.0" textFill="RED">
          <font>
