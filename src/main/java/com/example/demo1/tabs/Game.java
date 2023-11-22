@@ -16,7 +16,6 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 public class Game implements Initializable {
-
     @FXML
     private Pane e1;
     @FXML
@@ -45,13 +44,11 @@ public class Game implements Initializable {
     private Pane butts;
     @FXML
     private Label yay;
-
-
     private int right;
     private int wrong;
     private String word;
     private String setText;
-
+    private Sound sou = new Sound("/Users/phamngocthachha/Documents/GitHub/Dictionarie/src/main/resources/hapi.wav");
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -91,6 +88,7 @@ public class Game implements Initializable {
     }
 
     public void clicked(ActionEvent event) throws Exception {
+        String mean = "";
 
         ((Button) event.getSource()).setDisable(true);
         String letter = ((Button)event.getSource()).getText();
@@ -107,6 +105,7 @@ public class Game implements Initializable {
                 yay.setText("CONGRATULATION :DDD");
                 butts.setDisable(true);
                 norip.setVisible(true);
+                sou.start();
             }
         }
         else {
