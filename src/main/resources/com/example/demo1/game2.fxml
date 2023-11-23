@@ -32,7 +32,7 @@
             <Font name="Bookshelf Symbol 7" size="23.0" />
          </font>
       </JFXTextField>
-      <ImageView fx:id="img" fitHeight="218.0" fitWidth="151.0" layoutX="24.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img" fitHeight="218.0" fitWidth="151.0" layoutX="24.0" layoutY="225.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="e1" fitHeight="116.0" fitWidth="71.0" layoutX="312.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../picss/life.png" />

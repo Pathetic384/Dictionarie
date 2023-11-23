@@ -1,4 +1,5 @@
 package com.example.demo1.tabs;
+
 import com.example.demo1.MainUI;
 import com.example.demo1.SwitchScene;
 import com.jfoenix.controls.JFXButton;
@@ -38,6 +39,10 @@ public class Game2 implements Initializable {
     private Label res;
     private String word;
     private int error;
+    private String filePath1 = "/Users/phamngocthachha/Documents/GitHub/Dictionarie/src/main/resources/hapi.wav";
+    private Sound hapi = new Sound(filePath1);
+    private String filePath2 = "/Users/phamngocthachha/Documents/GitHub/Dictionarie/src/main/resources/cry.wav";
+    private Sound cry = new Sound(filePath2);
 
     public String getRandomWord(){
         Random random = new Random();
@@ -75,6 +80,8 @@ public class Game2 implements Initializable {
             img1.setImage(im);
             enter.setDisable(true);
             res.setText("CONGRATULATION!! :DDD");
+
+            hapi.loop();
         }
         else error--;
         if(error == 2) e3.setVisible(false);
@@ -100,14 +107,35 @@ public class Game2 implements Initializable {
             enter.setDisable(true);
             String result = "The word was: " + word;
             res.setText(result);
+            cry.loop();
         }
     }
     public void Replay(ActionEvent event) throws Exception {
         SwitchScene s = new SwitchScene();
         s.Switch("game2.fxml", MainUI.glob);
+
+        hapi.stop();
+        hapi.running = false;
+        hapi.looping = false;
+        hapi.pause();
+
+        cry.stop();
+        cry.running = false;
+        cry.looping = false;
+        cry.pause();
     }
     public void Back(ActionEvent event) throws Exception {
         SwitchScene s = new SwitchScene();
         s.Switch("selectgame.fxml", MainUI.glob);
+
+        hapi.stop();
+        hapi.running = false;
+        hapi.looping = false;
+        hapi.pause();
+
+        cry.stop();
+        cry.running = false;
+        cry.looping = false;
+        cry.pause();
     }
 }

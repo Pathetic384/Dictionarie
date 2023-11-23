@@ -48,8 +48,10 @@ public class Game implements Initializable {
     private int wrong;
     private String word;
     private String setText;
-    private Sound sou = new Sound("/Users/phamngocthachha/Documents/GitHub/Dictionarie/src/main/resources/hapi.wav");
-
+    private String filePath1 = "/Users/phamngocthachha/Documents/GitHub/Dictionarie/src/main/resources/hapi.wav";
+    private Sound hapi = new Sound(filePath1);
+    private String filePath2 = "/Users/phamngocthachha/Documents/GitHub/Dictionarie/src/main/resources/cry.wav";
+    private Sound cry = new Sound(filePath2);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -88,6 +90,8 @@ public class Game implements Initializable {
     }
 
     public void clicked(ActionEvent event) throws Exception {
+
+
         String mean = "";
 
         ((Button) event.getSource()).setDisable(true);
@@ -105,7 +109,7 @@ public class Game implements Initializable {
                 yay.setText("CONGRATULATION :DDD");
                 butts.setDisable(true);
                 norip.setVisible(true);
-                sou.start();
+                hapi.loop();
             }
         }
         else {
@@ -126,6 +130,7 @@ public class Game implements Initializable {
                 ded.setVisible(true);
                 rip.setVisible(true);
                 yay.setText("u stpid ? ,':/ ");
+                cry.loop();
             }
         }
     }
@@ -134,6 +139,30 @@ public class Game implements Initializable {
     public void Replay(ActionEvent event) throws Exception {
         SwitchScene s = new SwitchScene();
         s.Switch("game.fxml", MainUI.glob);
+        hapi.stop();
+        hapi.running = false;
+        hapi.looping = false;
+        hapi.pause();
+
+        cry.stop();
+        cry.running = false;
+        cry.looping = false;
+        cry.pause();
+    }
+
+    public void Back(ActionEvent event) throws Exception {
+        SwitchScene s = new SwitchScene();
+        s.Switch("selectgame.fxml", MainUI.glob);
+
+        hapi.stop();
+        hapi.running = false;
+        hapi.looping = false;
+        hapi.pause();
+
+        cry.stop();
+        cry.running = false;
+        cry.looping = false;
+        cry.pause();
     }
 
 }

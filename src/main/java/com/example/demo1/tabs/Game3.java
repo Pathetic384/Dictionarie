@@ -39,6 +39,10 @@ public class Game3 implements Initializable {
     private int right;
     private String word;
     private String setText;
+    private String filePath1 = "/Users/phamngocthachha/Documents/GitHub/Dictionarie/src/main/resources/hapi.wav";
+    private Sound hapi = new Sound(filePath1);
+    private String filePath2 = "/Users/phamngocthachha/Documents/GitHub/Dictionarie/src/main/resources/cry.wav";
+    private Sound cry = new Sound(filePath2);
 
 
     @Override
@@ -115,6 +119,7 @@ public class Game3 implements Initializable {
                 e4.setVisible(true);
                 e2.setVisible(true);
                 yay.setText("Congratulations ,':/ ");
+                hapi.loop();
             }
         }
         else {
@@ -122,6 +127,7 @@ public class Game3 implements Initializable {
             e3.setVisible(true);
             butts.setDisable(true);
             yay.setText("u stpid ? ,':/ ");
+            cry.loop();
         }
     }
 
@@ -129,6 +135,30 @@ public class Game3 implements Initializable {
     public void Replay(ActionEvent event) throws Exception {
         SwitchScene s = new SwitchScene();
         s.Switch("game3.fxml", MainUI.glob);
+        hapi.stop();
+        hapi.running = false;
+        hapi.looping = false;
+        hapi.pause();
+
+        cry.stop();
+        cry.running = false;
+        cry.looping = false;
+        cry.pause();
+    }
+
+    public void Back(ActionEvent event) throws Exception {
+        SwitchScene s = new SwitchScene();
+        s.Switch("selectgame.fxml", MainUI.glob);
+
+        hapi.stop();
+        hapi.running = false;
+        hapi.looping = false;
+        hapi.pause();
+
+        cry.stop();
+        cry.running = false;
+        cry.looping = false;
+        cry.pause();
     }
 
 }

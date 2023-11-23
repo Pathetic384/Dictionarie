@@ -12,8 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.tabs.Game">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.tabs.Game">
    <children>
       <ImageView fitHeight="416.0" fitWidth="880.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -278,5 +277,14 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <Button layoutX="2.0" layoutY="5.0" mnemonicParsing="false" onAction="#Back" styleClass="button" stylesheets="@../../../style.css">
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../picss/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
