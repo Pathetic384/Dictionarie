@@ -15,22 +15,22 @@
     <children>
         <ImageView fitHeight="416.0" fitWidth="880.0" layoutY="-5.0" pickOnBounds="true">
             <image>
-                <Image url="@../../../picss/hello-kitty-1440x900-anime-hello-kitty-hd-art-wallpaper-preview.jpg" />
+                <Image url="@../../../picss/bgg3.jpg" />
             </image>
         </ImageView>
         <ImageView fitHeight="242.0" fitWidth="1071.0" layoutX="-83.0" layoutY="313.0" pickOnBounds="true">
             <image>
-                <Image url="@../../../picss/2wYIhwP-removebg-preview.png" />
+                <Image url="@../../../picss/bgbutt.png" />
             </image>
         </ImageView>
         <ImageView fitHeight="316.0" fitWidth="622.0" layoutX="137.0" layoutY="29.0" pickOnBounds="true">
             <image>
-                <Image url="@../../../picss/Video-Call-Wallpapers-Hello-Kitty.jpeg" />
+                <Image url="@../../../picss/g3s.jpeg" />
             </image>
         </ImageView>
         <ImageView fitHeight="102.0" fitWidth="465.0" layoutX="203.0" layoutY="354.0" pickOnBounds="true">
             <image>
-                <Image url="@../../../picss/pngtree-pink-text-box-png-image_2886814-removebg-preview.png" />
+                <Image url="@../../../picss/bgtextg3.png" />
             </image>
         </ImageView>
         <AnchorPane prefHeight="532.0" prefWidth="880.0">

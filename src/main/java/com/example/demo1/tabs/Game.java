@@ -52,6 +52,7 @@ public class Game implements Initializable {
     private Sound hapi = new Sound(filePath1);
     private String filePath2 = "/Users/phamngocthachha/Documents/GitHub/Dictionarie/src/main/resources/cry.wav";
     private Sound cry = new Sound(filePath2);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

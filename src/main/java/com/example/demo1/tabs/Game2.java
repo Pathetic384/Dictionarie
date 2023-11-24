@@ -74,8 +74,8 @@ public class Game2 implements Initializable {
     }
     public void Check(ActionEvent event) throws Exception {
         if(Objects.equals(ans.getText(), "")) return;
-        if(ans.getText().trim().equals(word)) {
-            Image im = new Image(new File("src/main/resources/picss/happy.gif").toURI().toString());
+        if(ans.getText().toUpperCase().equals(word.toUpperCase())) {
+            Image im = new Image(new File("src/main/resources/picss/hapi.gif").toURI().toString());
             img.setImage(im);
             img1.setImage(im);
             enter.setDisable(true);
