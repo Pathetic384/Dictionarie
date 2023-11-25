@@ -74,7 +74,6 @@ public class Game3 implements Initializable {
         for(int i=0;i< word.length()*2;i++) {
             if(i % 2 == 0){
 
-
                 if(k == i / 2 - 1) {
                     setText += "_";
                     setText += " ";

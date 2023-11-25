@@ -1,5 +1,6 @@
 package com.example.demo1.tabs;
 
+
 import com.example.demo1.helpers.GtransHelper;
 import com.example.demo1.helpers.UIDicHelper;
 import javafx.event.ActionEvent;
@@ -8,13 +9,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.Timer;
+
+import static com.example.demo1.tabs.Loading.createAndShowGUI;
 
 public class GTranslate implements Initializable {
 
@@ -29,14 +37,19 @@ public class GTranslate implements Initializable {
     Image engIm;
     Image vietIm;
 
+    @FXML
+    private Pane load;
+
     private GtransHelper helper;
     private UIDicHelper speak_helper;
 
     String language1 = "en";
     String language2 = "vi";
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
+        load.setVisible(false);
         InputStream stream1, stream2;
         try {
             stream1 = new FileInputStream("src/main/resources/picss/eng.png");
@@ -47,7 +60,6 @@ public class GTranslate implements Initializable {
         engIm = new Image(stream1);
         vietIm = new Image(stream2);
     }
-
 
 
     public void Change(ActionEvent event) throws Exception {
@@ -75,7 +87,14 @@ public class GTranslate implements Initializable {
         Thread th = new Thread(helper);
         th.setDaemon(true);
         th.start();
+
+        Loading loader = new Loading();
+
+        loader.run();
+
     }
+
+
 
     public void Speak1(ActionEvent event) throws Exception {
         if(Objects.equals(text1.getText(), "")) return;
@@ -99,5 +118,4 @@ public class GTranslate implements Initializable {
         th.setDaemon(true);
         th.start();
     }
-
 }

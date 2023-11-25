@@ -235,3 +235,8 @@
     -fx-background-color: #266383;
     -fx-background-radius: 10 10 10 10;
 }
+
+.pink_butt
+{
+    -fx-background-color: #FFB6C1;
+}
