@@ -16,7 +16,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.*;
 
-public class Game2 implements Initializable {
+public class Game2 extends SelectGame implements Initializable {
     @FXML
     private JFXTextField scrambled;
     @FXML
@@ -37,12 +37,8 @@ public class Game2 implements Initializable {
     private ImageView e3;
     @FXML
     private Label res;
-    private String word;
     private int error;
-    private String filePath1 = "/Users/phamngocthachha/Documents/GitHub/Dictionarie/src/main/resources/hapi.wav";
-    private Sound hapi = new Sound(filePath1);
-    private String filePath2 = "/Users/phamngocthachha/Documents/GitHub/Dictionarie/src/main/resources/cry.wav";
-    private Sound cry = new Sound(filePath2);
+
 
     public String getRandomWord(){
         Random random = new Random();
@@ -54,7 +50,7 @@ public class Game2 implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         word = getRandomWord();
-        System.out.println(word);
+        //System.out.println(word);
         error = 3;
 
         int n = word.length();
@@ -111,31 +107,9 @@ public class Game2 implements Initializable {
         }
     }
     public void Replay(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene();
-        s.Switch("game2.fxml", MainUI.glob);
-
-        hapi.stop();
-        hapi.running = false;
-        hapi.looping = false;
-        hapi.pause();
-
-        cry.stop();
-        cry.running = false;
-        cry.looping = false;
-        cry.pause();
+        Back(hapi, cry, "game2.fxml");
     }
     public void Back(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene();
-        s.Switch("selectgame.fxml", MainUI.glob);
-
-        hapi.stop();
-        hapi.running = false;
-        hapi.looping = false;
-        hapi.pause();
-
-        cry.stop();
-        cry.running = false;
-        cry.looping = false;
-        cry.pause();
+        Back(hapi, cry, "selectgame.fxml");
     }
 }

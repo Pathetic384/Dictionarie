@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-public class Game3 implements Initializable {
+public class Game3 extends SelectGame implements Initializable {
 
     @FXML
     private Pane e1;
@@ -25,10 +25,6 @@ public class Game3 implements Initializable {
     @FXML
     private Pane e4;
     @FXML
-    private Pane e5;
-    @FXML
-    private Pane e6;
-    @FXML
     private Pane e7;
     @FXML
     private Text text;
@@ -36,13 +32,10 @@ public class Game3 implements Initializable {
     private Pane butts;
     @FXML
     private Label yay;
+    @FXML
+    private Label res;
     private int right;
-    private String word;
     private String setText;
-    private String filePath1 = "/Users/phamngocthachha/Documents/GitHub/Dictionarie/src/main/resources/hapi.wav";
-    private Sound hapi = new Sound(filePath1);
-    private String filePath2 = "/Users/phamngocthachha/Documents/GitHub/Dictionarie/src/main/resources/cry.wav";
-    private Sound cry = new Sound(filePath2);
 
 
     @Override
@@ -55,17 +48,12 @@ public class Game3 implements Initializable {
         e7.setVisible(false);
         text.setText("");
 
-
         right = 0;
-
-
         word = getRandomWord();
 
-
-        System.out.println(word);
+        //System.out.println(word);
         word = word.toUpperCase();
         setText = "";
-
 
         Random rand = new Random();
         int k = rand.nextInt(word.length() - 1);
@@ -127,38 +115,19 @@ public class Game3 implements Initializable {
             e3.setVisible(true);
             butts.setDisable(true);
             yay.setText("u stpid ? ,':/ ");
+            String result = "The word was: " + word;
+            res.setText(result);
             cry.loop();
         }
     }
 
 
     public void Replay(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene();
-        s.Switch("game3.fxml", MainUI.glob);
-        hapi.stop();
-        hapi.running = false;
-        hapi.looping = false;
-        hapi.pause();
-
-        cry.stop();
-        cry.running = false;
-        cry.looping = false;
-        cry.pause();
+        Back(hapi, cry, "game3.fxml");
     }
 
     public void Back(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene();
-        s.Switch("selectgame.fxml", MainUI.glob);
-
-        hapi.stop();
-        hapi.running = false;
-        hapi.looping = false;
-        hapi.pause();
-
-        cry.stop();
-        cry.running = false;
-        cry.looping = false;
-        cry.pause();
+        Back(hapi, cry, "selectgame.fxml");
     }
 
 }

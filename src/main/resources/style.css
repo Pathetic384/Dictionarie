@@ -235,6 +235,14 @@
     -fx-background-color: #266383;
     -fx-background-radius: 10 10 10 10;
 }
+.text-area .scroll-bar:vertical:disabled {
+    -fx-opacity: 0;
+}
+.jtext-area  {
+    background: transparent;
+    border: none;
+    outline: none;
+}
 
 .pink_butt
 {

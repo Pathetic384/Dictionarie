@@ -21,6 +21,7 @@ public class Main extends Application {
     private static Stage stageReference;
 
     public static void main(String[] args) throws Exception{
+
         launch();
     }
 

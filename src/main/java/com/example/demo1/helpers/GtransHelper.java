@@ -21,8 +21,6 @@ public class GtransHelper extends Task<String> {
 
     @Override
     protected String call() throws Exception {
-        // INSERT YOU URL HERE
-        //https://script.google.com/macros/s/AKfycbxImVKCoyddpnSJGhq8RL_J0kkwlNXx90GY0yE_IsB835G1_BWdQS9vsuX14zOgRyXB/exec
         String urlStr = "https://script.google.com/macros/s/AKfycbxImVKCoyddpnSJGhq8RL_J0kkwlNXx90GY0yE_IsB835G1_BWdQS9vsuX14zOgRyXB/exec" +
                 "?q=" + URLEncoder.encode(text, "UTF-8") +
                 "&target=" + language2 +

@@ -40,7 +40,6 @@ public class GTranslate implements Initializable {
     String language1 = "en";
     String language2 = "vi";
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         load.setVisible(false);
@@ -54,7 +53,6 @@ public class GTranslate implements Initializable {
         engIm = new Image(stream1);
         vietIm = new Image(stream2);
     }
-
 
     public void Change(ActionEvent event) throws Exception {
         String tmp = language1;

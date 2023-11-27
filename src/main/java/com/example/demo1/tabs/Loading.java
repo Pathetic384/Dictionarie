@@ -18,7 +18,7 @@ public class Loading {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(150, 150);
 
-        ImageIcon icon = new ImageIcon(new ImageIcon("/Users/phamngocthachha/Documents/GitHub/Dictionarie/src/main/resources/picss/load.gif").getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
+        ImageIcon icon = new ImageIcon(new ImageIcon("src/main/resources/picss/load.gif").getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
 
 
         // Tạo một JLabel để chứa icon loading

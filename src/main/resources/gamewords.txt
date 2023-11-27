@@ -11,4 +11,3 @@ damn
 duck
 hai
 hello
-you
