@@ -2,6 +2,7 @@ package com.example.demo1.tabs;
 
 import com.example.demo1.Alerts;
 import com.example.demo1.MainUI;
+import com.example.demo1.SwitchScene;
 import com.example.demo1.WordsManagement.Dictionary;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -57,6 +58,8 @@ public class AddWord extends Alerts implements Initializable {
         testing.insertWord(adding.getText(), meaning.getText());
         testing.SaveFile();
         System.out.println("Done!");
+        SwitchScene s = new SwitchScene();
+        s.Switch("addword.fxml", MainUI.glob);
     }
 
     @Override

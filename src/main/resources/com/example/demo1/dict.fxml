@@ -17,30 +17,25 @@
             <Image url="@../../../picss/bk.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="551.0" prefWidth="893.0">
+      <AnchorPane layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="551.0" prefWidth="893.0" style="-fx-background-color: #DEF2ED;">
          <children>
-            <TextArea fx:id="result" editable="false" focusTraversable="false" layoutX="401.0" layoutY="124.0" prefHeight="382.0" prefWidth="440.0" promptText="  Meaning" wrapText="true">
+            <TextArea fx:id="result" editable="false" focusTraversable="false" layoutX="386.0" layoutY="66.0" prefHeight="331.0" prefWidth="465.0" promptText="  Meaning" wrapText="true">
                <font>
-                  <Font name="Candara Italic" size="20.0" />
+                  <Font name="Arial Italic" size="20.0" />
                </font>
             </TextArea>
-            <Label fx:id="TheWord" layoutX="416.0" layoutY="64.0" prefHeight="38.0" prefWidth="409.0">
+            <Label fx:id="TheWord" layoutX="386.0" layoutY="17.0" prefHeight="38.0" prefWidth="280.0">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="search" layoutX="39.0" layoutY="36.0" prefHeight="38.0" prefWidth="271.0" promptText="Find your word" unFocusColor="#a511cf">
+            <JFXTextField fx:id="search" layoutX="14.0" layoutY="17.0" prefHeight="38.0" prefWidth="271.0" promptText="Find your word" unFocusColor="#a511cf">
                <font>
                   <Font size="17.0" />
                </font>
             </JFXTextField>
-            <JFXListView fx:id="recommend" layoutX="46.0" layoutY="96.0" prefHeight="420.0" prefWidth="257.0" />
-            <JFXButton fx:id="enter" buttonType="RAISED" layoutX="319.0" layoutY="36.0" onAction="#confirm" prefHeight="38.0" prefWidth="69.0" styleClass="search_butt" stylesheets="@../../../style.css" text="Search" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXButton>
-            <JFXButton buttonType="RAISED" contentDisplay="RIGHT" graphicTextGap="2.0" layoutX="658.0" layoutY="20.0" onAction="#read" prefHeight="30.0" prefWidth="84.0" styleClass="read" stylesheets="@../../../style.css" text="Read">
+            <JFXListView fx:id="recommend" layoutX="21.0" layoutY="66.0" prefHeight="331.0" prefWidth="257.0" />
+            <JFXButton buttonType="RAISED" contentDisplay="RIGHT" graphicTextGap="2.0" layoutX="675.0" layoutY="20.0" onAction="#read" prefHeight="30.0" prefWidth="84.0" styleClass="read" stylesheets="@../../../style.css" text="Read">
                <font>
                   <Font size="15.0" />
                </font>
@@ -52,7 +47,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton buttonType="RAISED" contentDisplay="RIGHT" graphicTextGap="0.0" layoutX="757.0" layoutY="20.0" onAction="#delete" prefHeight="30.0" prefWidth="84.0" styleClass="delete" stylesheets="@../../../style.css" text="Delete">
+            <JFXButton buttonType="RAISED" contentDisplay="RIGHT" graphicTextGap="0.0" layoutX="767.0" layoutY="20.0" onAction="#delete" prefHeight="30.0" prefWidth="84.0" styleClass="delete" stylesheets="@../../../style.css" text="Delete">
                <font>
                   <Font size="15.0" />
                </font>
@@ -64,6 +59,11 @@
                   </ImageView>
                </graphic>
             </JFXButton>
+            <TextArea fx:id="synonyms" editable="false" layoutX="17.0" layoutY="412.0" prefHeight="104.0" prefWidth="835.0" promptText="    Synonyms" wrapText="true">
+               <font>
+                  <Font name="System Italic" size="19.0" />
+               </font>
+            </TextArea>
          </children>
       </AnchorPane>
    </children>

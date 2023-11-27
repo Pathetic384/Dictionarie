@@ -11,14 +11,14 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.tabs.AddWord">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.tabs.AddWord">
    <children>
       <ImageView fitHeight="614.0" fitWidth="882.0" layoutX="-7.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../Downloads/stars-stars-texture-black-wallpaper-preview.jpg" />
+            <Image url="@../../../picss/bk2.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="532.0" prefWidth="871.0">
+      <AnchorPane layoutX="3.0" prefHeight="532.0" prefWidth="871.0" style="-fx-background-color: #DEF2ED;">
          <children>
             <JFXTextField fx:id="adding" layoutX="69.0" layoutY="46.0" prefHeight="60.0" prefWidth="501.0" promptText="Enter the word you want to add">
                <font>

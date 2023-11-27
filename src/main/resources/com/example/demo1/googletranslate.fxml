@@ -10,21 +10,21 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.tabs.GTranslate">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.tabs.GTranslate">
    <children>
       <ImageView fitHeight="574.0" fitWidth="888.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../picss/bk5.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="7.0" prefHeight="532.0" prefWidth="871.0">
+      <AnchorPane layoutX="-2.0" prefHeight="532.0" prefWidth="888.0" style="-fx-background-color: #DEF2ED;">
          <children>
-            <TextArea fx:id="text1" layoutX="14.0" layoutY="131.0" prefHeight="385.0" prefWidth="354.0" wrapText="true">
+            <TextArea fx:id="text1" layoutX="35.0" layoutY="127.0" prefHeight="385.0" prefWidth="354.0" wrapText="true">
                <font>
                   <Font size="17.0" />
                </font>
             </TextArea>
-            <TextArea fx:id="text2" editable="false" layoutX="503.0" layoutY="131.0" prefHeight="385.0" prefWidth="354.0" wrapText="true">
+            <TextArea fx:id="text2" editable="false" layoutX="502.0" layoutY="131.0" prefHeight="385.0" prefWidth="354.0" wrapText="true">
                <font>
                   <Font size="17.0" />
                </font>
@@ -39,7 +39,7 @@
                   <Font size="26.0" />
                </font>
             </Label>
-            <Button layoutX="392.0" layoutY="299.0" mnemonicParsing="false" onAction="#Change" prefHeight="69.0" prefWidth="87.0" styleClass="switch_button" stylesheets="@../../../style.css">
+            <Button layoutX="400.0" layoutY="295.0" mnemonicParsing="false" onAction="#Change" prefHeight="69.0" prefWidth="87.0" styleClass="switch_button" stylesheets="@../../../style.css">
                <graphic>
                   <ImageView fitHeight="61.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,7 +58,7 @@
                   <Image url="@../../../picss/viet.png" />
                </image>
             </ImageView>
-            <JFXButton buttonType="RAISED" layoutX="392.0" layoutY="54.0" onAction="#Enter" prefHeight="51.0" prefWidth="87.0" stylesheets="@../../../style.css" text="Search" textFill="#e9fbff">
+            <JFXButton buttonType="RAISED" layoutX="400.0" layoutY="48.0" onAction="#Enter" prefHeight="51.0" prefWidth="87.0" stylesheets="@../../../style.css" text="Search" textFill="#e9fbff">
                <font>
                   <Font size="16.0" />
                </font>

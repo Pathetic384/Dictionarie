@@ -19,7 +19,7 @@
 
 .exit_button
 {
-    -fx-background-color: #4ab4de;
+    -fx-background-color: #3F59A2;
     -fx-background-radius: 10 10 10 10;
 }
 .exit_button:hover
@@ -34,7 +34,7 @@
 }
 .top_panel
 {
-    -fx-background-color: linear-gradient(to left, #4ab4de, #ff80ed);
+    -fx-background-color: #3F59A2;
 }
 .recommend
 {
@@ -72,7 +72,7 @@
 }
 .butt1
 {
-    -fx-background-color: #FED9D9;
+    -fx-background-color: #C4CEE8;
     -fx-background-radius: 0
 }
 .butt1:hover
@@ -87,7 +87,7 @@
 }
 .butt2
 {
-    -fx-background-color: #FED9D9;
+    -fx-background-color: #C4CEE8;
     -fx-background-radius: 0
 }
 .butt2:hover
@@ -102,7 +102,7 @@
 }
 .butt3
 {
-    -fx-background-color: #FED9D9;
+    -fx-background-color: #C4CEE8;
     -fx-background-radius: 0
 }
 .butt3:hover
@@ -117,7 +117,7 @@
 }
 .butt4
 {
-    -fx-background-color: #FED9D9;
+    -fx-background-color: #C4CEE8;
     -fx-background-radius: 0
 }
 .butt4:hover
@@ -132,7 +132,7 @@
 }
 .butt5
 {
-    -fx-background-color: #FED9D9;
+    -fx-background-color: #C4CEE8;
     -fx-background-radius: 0
 }
 .butt5:hover
@@ -147,7 +147,7 @@
 }
 .read
 {
-    -fx-background-color: #8CE8EC;
+    -fx-background-color: #397E93;
     -fx-background-radius: 10 10 10 10;
 }
 .read:hover
@@ -162,7 +162,7 @@
 }
 .delete
 {
-    -fx-background-color: #8CE8EC;
+    -fx-background-color: #397E93;
     -fx-background-radius: 10 10 10 10;
 }
 .delete:hover
@@ -177,7 +177,7 @@
 }
 .search_butt
 {
-    -fx-background-color: #AF5AFA;
+    -fx-background-color: #397E93;
     -fx-background-radius: 10 10 10 10;
 }
 .search_butt:hover

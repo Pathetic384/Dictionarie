@@ -133,6 +133,7 @@ public class Game extends SelectGame implements Initializable {
     }
 
     public void Back(ActionEvent event) throws Exception {
+        MainUI.ham.setDisable(false);
         Back(hapi, cry, "selectgame.fxml");
     }
 

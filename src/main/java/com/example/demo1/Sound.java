@@ -1,4 +1,4 @@
-package com.example.demo1.tabs;
+package com.example.demo1;
 
 import java.io.File;
 import java.io.FileNotFoundException;

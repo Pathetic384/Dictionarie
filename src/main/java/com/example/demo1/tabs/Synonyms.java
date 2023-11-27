@@ -26,7 +26,7 @@ public class Synonyms{
     }
 
 
-    public String Syn(String text) {
+    public static String Syn(String text) {
 
         String res = "";
 
@@ -57,7 +57,7 @@ public class Synonyms{
 
             for (int j = 0; j < al.size(); j++) {
                 res += al.get(j);
-                res += '\n';
+                res += " ; ";
             }
 
         } else {

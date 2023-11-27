@@ -15,10 +15,6 @@ import java.util.ArrayList;
 public class Main extends Application {
     private double x = 0;
     private double y = 0;
-    public static final ArrayList<String> winningWords = new ArrayList<>();
-    public static final ArrayList<String> dictionaryWords = new ArrayList<>();
-
-    private static Stage stageReference;
 
     public static void main(String[] args) throws Exception{
 

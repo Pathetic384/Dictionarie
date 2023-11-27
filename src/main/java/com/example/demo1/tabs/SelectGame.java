@@ -2,6 +2,7 @@ package com.example.demo1.tabs;
 
 import com.example.demo1.MainUI;
 import com.example.demo1.SwitchScene;
+import com.example.demo1.Sound;
 import javafx.event.ActionEvent;
 
 public class SelectGame {
@@ -11,17 +12,23 @@ public class SelectGame {
     public final String filePath2 = "src/main/resources/cry.wav";
     public final Sound cry = new Sound(filePath2);
 
-    public void Game1(ActionEvent event) throws Exception {
+
+    private void Games(String path) throws Exception{
+        MainUI.draw.close();
+        MainUI.draw.setDisable(true);
+        MainUI.ham.setDisable(true);
         SwitchScene s = new SwitchScene();
-        s.Switch("game3.fxml", MainUI.glob);
+        s.Switch(path, MainUI.glob);
     }
+    public void Game1(ActionEvent event) throws Exception {
+        Games("game3.fxml");
+    }
+
     public void Game2(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene();
-        s.Switch("game.fxml", MainUI.glob);
+        Games("game.fxml");
     }
     public void Game3(ActionEvent event) throws Exception {
-        SwitchScene s = new SwitchScene();
-        s.Switch("game2.fxml", MainUI.glob);
+        Games("game2.fxml");
     }
 
     public static void Back(Sound hapi, Sound cry, String path) throws Exception {
@@ -32,7 +39,6 @@ public class SelectGame {
         hapi.running = false;
         hapi.looping = false;
         hapi.pause();
-
         cry.stop();
         cry.running = false;
         cry.looping = false;

@@ -1,4 +1,4 @@
-package com.example.demo1.tabs;
+package com.example.demo1;
 
 import javafx.scene.image.ImageView;
 

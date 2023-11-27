@@ -13,15 +13,26 @@
             <Image url="@../../../picss/olli-the-polite-cat.png" />
          </image>
       </ImageView>
-      <JFXButton accessibleText="dict" buttonType="RAISED" prefHeight="74.0" prefWidth="186.0" styleClass="butt1" stylesheets="@../../../style.css" text="Dictionary" textFill="#fb00ff">
+      <JFXButton accessibleText="dict" buttonType="RAISED" prefHeight="86.0" prefWidth="185.0" styleClass="butt1" stylesheets="@../../../style.css" text="Dictionary" textFill="#fb00ff">
          <font>
-            <Font size="13.0" />
+            <Font size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton accessibleText="game" buttonType="RAISED" prefHeight="74.0" prefWidth="185.0" ripplerFill="#8f3d3d" styleClass="butt2" stylesheets="@../../../style.css" text="Game" textFill="#e60b0b" />
-      <JFXButton accessibleText="history" buttonType="RAISED" prefHeight="76.0" prefWidth="185.0" styleClass="butt3" stylesheets="@../../../style.css" text="History" />
-      <JFXButton accessibleText="newword" buttonType="RAISED" prefHeight="73.0" prefWidth="185.0" styleClass="butt4" stylesheets="@../../../style.css" text="New Word" textFill="#03a5e0" />
-      <JFXButton accessibleText="synonyms" buttonType="RAISED" prefHeight="74.0" prefWidth="185.0" styleClass="butt5" stylesheets="@../../../style.css" text="Synonyms" textFill="#b210db" />
-      <JFXButton accessibleText="googletranslate" buttonType="RAISED" prefHeight="75.0" prefWidth="185.0" styleClass="butt1" stylesheets="@../../../style.css" text="Google Translate" textFill="#00ed28" />
+      <JFXButton accessibleText="game" buttonType="RAISED" prefHeight="88.0" prefWidth="185.0" ripplerFill="#8f3d3d" styleClass="butt2" stylesheets="@../../../style.css" text="Game" textFill="#e60b0b">
+         <font>
+            <Font size="20.0" />
+         </font></JFXButton>
+      <JFXButton accessibleText="history" buttonType="RAISED" prefHeight="88.0" prefWidth="185.0" styleClass="butt3" stylesheets="@../../../style.css" text="History">
+         <font>
+            <Font size="20.0" />
+         </font></JFXButton>
+      <JFXButton accessibleText="newword" buttonType="RAISED" prefHeight="84.0" prefWidth="185.0" styleClass="butt4" stylesheets="@../../../style.css" text="New Word" textFill="#03a5e0">
+         <font>
+            <Font size="20.0" />
+         </font></JFXButton>
+      <JFXButton accessibleText="googletranslate" buttonType="RAISED" prefHeight="93.0" prefWidth="185.0" styleClass="butt1" stylesheets="@../../../style.css" text="Google Translate" textFill="#3d6043">
+         <font>
+            <Font size="20.0" />
+         </font></JFXButton>
    </children>
 </VBox>

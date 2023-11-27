@@ -25,8 +25,10 @@ public class MainUI extends SwitchScene implements Initializable {
 
     @FXML
     private JFXHamburger hamburger;
+    public static JFXHamburger ham;
     @FXML
     private JFXDrawer drawer;
+    public static JFXDrawer draw;
     @FXML
     public AnchorPane root;
     public static AnchorPane glob = new AnchorPane();
@@ -40,6 +42,8 @@ public class MainUI extends SwitchScene implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Scanner sc = null;
         glob = root;
+        ham = hamburger;
+        draw = drawer;
         VBox box = null;
         try {Switch("dict.fxml", root);
             testing.LoadFile(path);

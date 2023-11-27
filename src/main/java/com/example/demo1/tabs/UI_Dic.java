@@ -29,6 +29,8 @@ public class UI_Dic extends Alerts implements Initializable {
     @FXML
     private TextArea result;
     @FXML
+    private TextArea synonyms;
+    @FXML
     private Label TheWord;
 
     private UIDicHelper helper;
@@ -62,20 +64,21 @@ public class UI_Dic extends Alerts implements Initializable {
         if(select == null) return;
         String ans = MainUI.testing.FindMeaning(select);
         result.setText(ans);
+        synonyms.setText("  Synonyms:  " + Synonyms.Syn(select));
         TheWord.setText(select);
         History.AddToSQL(select, ans);
     }
 
-    public void confirm(ActionEvent event) throws Exception {
-
-        String text = search.getText();
-        if(MainUI.testing.FindMeaning(text) != null) {
-            String ans = MainUI.testing.FindMeaning(text);
-            result.setText(ans);
-            TheWord.setText(text);
-            History.AddToSQL(text, ans);
-        }
-    }
+//    public void confirm(ActionEvent event) throws Exception {
+//
+//        String text = search.getText();
+//        if(MainUI.testing.FindMeaning(text) != null) {
+//            String ans = MainUI.testing.FindMeaning(text);
+//            result.setText(ans);
+//            TheWord.setText(text);
+//            History.AddToSQL(text, ans)
+//        }
+//    }
 
     public void read(ActionEvent event) throws Exception {
         if (Objects.equals(TheWord.getText(), "")) return;
@@ -85,7 +88,6 @@ public class UI_Dic extends Alerts implements Initializable {
         helper.valueProperty().addListener((observable, oldValue, newValue) -> newValue.start());
 
         Thread th = new Thread(helper);
-        th.setDaemon(true);
         th.start();
     }
 

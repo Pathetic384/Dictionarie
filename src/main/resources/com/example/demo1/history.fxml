@@ -16,7 +16,7 @@
             <Image url="@../../../picss/2541516002.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="-1.0" prefHeight="532.0" prefWidth="871.0">
+      <AnchorPane layoutX="-1.0" prefHeight="532.0" prefWidth="879.0" style="-fx-background-color: #DEF2ED;">
          <children>
             <ListView fx:id="searched" layoutX="62.0" layoutY="222.0" prefHeight="295.0" prefWidth="748.0" />
             <TextArea fx:id="meaning" editable="false" layoutX="62.0" layoutY="27.0" prefHeight="173.0" prefWidth="534.0" promptText="    Meaning of the word" wrapText="true">
@@ -29,7 +29,7 @@
                   <Font name="System Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="617.0" layoutY="91.0" onAction="#DeleteHistory" prefHeight="45.0" prefWidth="115.0" styleClass="exit_button" stylesheets="@../../../style.css" text="Delete">
+            <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="617.0" layoutY="91.0" onAction="#DeleteHistory" prefHeight="45.0" prefWidth="115.0" styleClass="read" stylesheets="@../../../style.css" text="Delete">
                <font>
                   <Font size="16.0" />
                </font>
@@ -41,7 +41,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="617.0" layoutY="154.0" onAction="#ClearHistory" prefHeight="45.0" prefWidth="115.0" styleClass="exit_button" stylesheets="@../../../style.css" text="Clear" textFill="#cc2222">
+            <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="617.0" layoutY="154.0" onAction="#ClearHistory" prefHeight="45.0" prefWidth="115.0" styleClass="delete" stylesheets="@../../../style.css" text="Clear" textFill="#cc2222">
                <font>
                   <Font name="System Italic" size="15.0" />
                </font>
