@@ -112,6 +112,8 @@ public class MainUI extends SwitchScene implements Initializable {
     public void Exit(ActionEvent event) throws Exception {
         Stage stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
         stage.close();
+
+        System.exit(0);
     }
 
 }
