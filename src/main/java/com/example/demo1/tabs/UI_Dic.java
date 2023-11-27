@@ -22,7 +22,6 @@ import java.util.ResourceBundle;
 
 public class UI_Dic extends Alerts implements Initializable {
 
-
     @FXML
     private JFXTextField search;
     @FXML
@@ -35,7 +34,6 @@ public class UI_Dic extends Alerts implements Initializable {
     private UIDicHelper helper;
 
     ObservableList<String> list = FXCollections.observableArrayList();
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)

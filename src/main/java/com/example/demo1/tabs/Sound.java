@@ -10,7 +10,6 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-
 public class Sound  {
 
     private Clip clip;
@@ -46,10 +45,12 @@ public class Sound  {
             }
         }).start();
     }
+
     public void pause(){
         running = false;
         clip.stop();
     }
+
     public void resume(){
         running = true;
         new Thread(new Runnable(){
@@ -64,11 +65,13 @@ public class Sound  {
             }
         }).start();
     }
+
     public void stop(){
         running = false;
         looping = false;
         clip.setFramePosition(0);
     }
+
     public void loop(){
         looping = true;
         new Thread(new Runnable(){
@@ -80,6 +83,7 @@ public class Sound  {
             }
         }).start();
     }
+
     public boolean isResumed(){
         if(clip.getMicrosecondPosition()>0)
             return true;

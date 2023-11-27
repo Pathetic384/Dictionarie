@@ -94,8 +94,6 @@ public class GTranslate implements Initializable {
 
     }
 
-
-
     public void Speak1(ActionEvent event) throws Exception {
         if(Objects.equals(text1.getText(), "")) return;
         String text = text1.getText();

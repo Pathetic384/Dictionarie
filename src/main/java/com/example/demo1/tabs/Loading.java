@@ -16,18 +16,21 @@ public class Loading {
     public static void createAndShowGUI() {
         JFrame frame = new JFrame("");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(200, 200);
+        frame.setSize(150, 150);
+
+        ImageIcon icon = new ImageIcon(new ImageIcon("/Users/phamngocthachha/Documents/GitHub/Dictionarie/src/main/resources/picss/load.gif").getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
+
 
         // Tạo một JLabel để chứa icon loading
-        
-        JLabel loadingLabel = new JLabel(new ImageIcon("load.gif"));
-        loadingLabel.setHorizontalAlignment(JLabel.CENTER);
+        JLabel loadingLabel = new JLabel(icon, JLabel.CENTER);
+
+
 
         // Thêm JLabel vào JFrame
         frame.getContentPane().add(loadingLabel, BorderLayout.CENTER);
 
         // Tạo một timer để đóng cửa sổ sau 2 giây
-        Timer timer = new Timer(2000, new ActionListener() {
+        Timer timer = new Timer(1800, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();

@@ -19,13 +19,11 @@ public class Synonyms{
     TextArea text2;
 
 
-
     public void Enter(ActionEvent event) throws Exception {
         String text = text1.getText();
         String ans = Syn(text);
         text2.setText(ans);
     }
-
 
 
     public String Syn(String text) {
