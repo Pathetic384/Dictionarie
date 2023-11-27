@@ -74,7 +74,7 @@ public class Game3 implements Initializable {
         for(int i=0;i< word.length()*2;i++) {
             if(i % 2 == 0){
 
-                if(k == i / 2 - 1) {
+                if(k == ((double) i / 2) - 1) {
                     setText += "_";
                     setText += " ";
                 } else {
@@ -97,20 +97,21 @@ public class Game3 implements Initializable {
     public void clicked(ActionEvent event) throws Exception {
         int k = 0;
         for(int i = 0; i < word.length() * 2; i++) {
-            if(setText.charAt(i) == '_') {
-                k = i / 2;
+            if(i % 2 == 0) {
+                if (setText.charAt(i) == '_') {
+                    k = i / 2;
+                }
             }
         }
 
         ((Button) event.getSource()).setDisable(true);
         String letter = ((Button)event.getSource()).getText();
-        if(word.indexOf(letter) == k ) {
+        if(word.charAt(k) == letter.charAt(0)) {
             int i = word.indexOf(letter);
             if (i != -1) {
-                String tmp = setText.substring(0, i * 2) + letter + setText.substring(i * 2 + 1);
+                String tmp = setText.substring(0, k * 2) + letter + setText.substring(k * 2 + 1);
                 setText = tmp;
                 text.setText(setText);
-                i = word.indexOf(letter, i+1);
                 right++;
             }
             if (right == 1) {

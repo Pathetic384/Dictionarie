@@ -24,12 +24,8 @@ public class Loading {
         // Tạo một JLabel để chứa icon loading
         JLabel loadingLabel = new JLabel(icon, JLabel.CENTER);
 
-
-
-        // Thêm JLabel vào JFrame
         frame.getContentPane().add(loadingLabel, BorderLayout.CENTER);
 
-        // Tạo một timer để đóng cửa sổ sau 2 giây
         Timer timer = new Timer(1800, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,11 +33,9 @@ public class Loading {
             }
         });
 
-        // Bắt đầu đếm thời gian
         timer.start();
 
-        // Hiển thị cửa sổ
-        frame.setLocationRelativeTo(null); // Đưa cửa sổ ra giữa màn hình
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 }
